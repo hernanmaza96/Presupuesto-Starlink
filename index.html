@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Presupuesto Starlink y Accesorios</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0066cc;
+            --primary-dark: #0052a3;
+            --secondary: #00cc66;
+            --secondary-dark: #00a352;
+            --accent: #ff6600;
+            --dark: #2c3e50;
+            --light: #f8f9fa;
+            --gray: #6c757d;
+            --light-gray: #e9ecef;
+            --danger: #e74c3c;
+            --white: #ffffff;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --border-radius: 8px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: var(--light);
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: var(--white);
+            padding: 2rem 0;
+            box-shadow: var(--shadow);
+            margin-bottom: 2rem;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        h1 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            color: var(--primary);
+            border-bottom: 2px solid var(--primary);
+            padding-bottom: 0.5rem;
+            margin-top: 2rem;
+        }
+
+        h3 {
+            font-size: 1.4rem;
+            color: var(--primary-dark);
+        }
+
+        h4 {
+            font-size: 1.2rem;
+            color: var(--dark);
+        }
+
+        p {
+            margin-bottom: 1rem;
+        }
+
+        .location {
+            display: inline-block;
+            background-color: var(--light-gray);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            color: var(--gray);
+            margin-bottom: 1.5rem;
+        }
+
+        .options-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .option {
+            background-color: var(--white);
+            border-radius: var(--border-radius);
+            padding: 1.5rem;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-left: 4px solid var(--primary);
+        }
+
+        .option:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .option.selected {
+            background-color: #f0f7ff;
+            border-left: 4px solid var(--accent);
+        }
+
+        .price {
+            font-weight: 700;
+            color: var(--danger);
+            font-size: 1.3rem;
+            margin: 0.5rem 0;
+        }
+
+        .specs {
+            margin: 1rem 0;
+            color: var(--gray);
+            font-size: 0.95rem;
+        }
+
+        .specs p {
+            margin-bottom: 0.5rem;
+        }
+
+        .radio-option {
+            margin: 1rem 0;
+        }
+
+        .radio-option input[type="radio"] {
+            margin-right: 0.5rem;
+        }
+
+        .radio-option label {
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .plan-options {
+            margin: 1rem 0;
+        }
+
+        .plan-option {
+            background-color: var(--light-gray);
+            padding: 1rem;
+            border-radius: var(--border-radius);
+            margin-bottom: 0.8rem;
+            transition: all 0.3s ease;
+        }
+
+        .plan-option.selected-plan {
+            background-color: #e6f2ff;
+            border-left: 3px solid var(--primary);
+        }
+
+        .plan-option label {
+            font-weight: 600;
+            cursor: pointer;
+            display: block;
+        }
+
+        .plan-option p {
+            font-size: 0.9rem;
+            color: var(--gray);
+            margin-left: 1.5rem;
+            margin-top: 0.3rem;
+        }
+
+        .btn-container {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.8rem 1.5rem;
+            border-radius: var(--border-radius);
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 0.95rem;
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            color: var(--white);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background-color: var(--secondary);
+            color: var(--white);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--secondary-dark);
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--primary);
+            color: var(--white);
+        }
+
+        .accessories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .accessory {
+            background-color: var(--white);
+            border-radius: var(--border-radius);
+            padding: 1.5rem;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease;
+        }
+
+        .accessory:hover {
+            transform: translateY(-5px);
+        }
+
+        .accessory h4 {
+            margin-bottom: 0.5rem;
+        }
+
+        .summary {
+            background-color: var(--white);
+            border-radius: var(--border-radius);
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            margin: 2rem 0;
+        }
+
+        .plan-info {
+            background-color: #f8f9fa;
+            padding: 1rem;
+            border-radius: var(--border-radius);
+            margin-bottom: 1.5rem;
+            border-left: 3px solid var(--gray);
+        }
+
+        .plan-info strong {
+            color: var(--primary);
+        }
+
+        .cost-list {
+            list-style: none;
+        }
+
+        .cost-list li {
+            padding: 0.8rem 0;
+            border-bottom: 1px solid var(--light-gray);
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .cost-list li:last-child {
+            border-bottom: none;
+        }
+
+        .cost-item {
+            display: none;
+        }
+
+        .cost-item.visible {
+            display: flex;
+        }
+
+        .total {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--danger);
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 2px solid var(--light-gray);
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .whatsapp-btn {
+            background-color: var(--secondary);
+            color: var(--white);
+            font-size: 1.1rem;
+            padding: 1rem 2rem;
+            margin: 2rem auto;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .whatsapp-btn:hover {
+            background-color: var(--secondary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .whatsapp-btn::before {
+            content: "";
+            display: inline-block;
+            width: 24px;
+            height: 24px;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>');
+            background-size: contain;
+        }
+
+        footer {
+            background-color: var(--dark);
+            color: var(--white);
+            padding: 2rem 0;
+            margin-top: 3rem;
+            text-align: center;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .footer-logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .footer-contact {
+            margin-bottom: 1rem;
+        }
+
+        .footer-contact a {
+            color: var(--white);
+            text-decoration: none;
+            margin: 0 0.5rem;
+        }
+
+        .footer-copyright {
+            font-size: 0.9rem;
+            color: var(--gray);
+        }
+
+        @media (max-width: 768px) {
+            .options-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            h1 {
+                font-size: 1.8rem;
+            }
+            
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
+            
+            .btn-container {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <h1>Presupuesto Starlink y accesorios para TV Digital</h1>
+            
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="location">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16" style="vertical-align: text-top; margin-right: 5px;">
+                <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/>
+            </svg>
+            Balcarce, Buenos Aires
+        </div>
+
+        <section>
+            <h2>Opciones de Equipos Starlink</h2>
+            <div class="options-grid">
+                <div class="option" id="option-mini">
+                    <h3>Starlink Mini (Portátil)</h3>
+                    <div class="price">$189.000 ARS</div>
+                    <div class="specs">
+                        <p><strong>Velocidad:</strong> 50-100 Mbps</p>
+                        <p><strong>Latencia:</strong> ~23 ms</p>
+                        <p><strong>Consumo:</strong> 25-40 W</p>
+                    </div>
+                    
+                    <div class="radio-option">
+                        <input type="radio" name="starlink-option" id="mini-option" value="189000" checked>
+                        <label for="mini-option">Seleccionar esta opción</label>
+                    </div>
+                    
+                    <h4>Planes compatibles:</h4>
+                    <div class="plan-options">
+                        <div class="plan-option">
+                            <input type="radio" name="plan-option" id="plan-lite" value="38000" checked>
+                            <label for="plan-lite">Residencial Lite: $38.000/mes</label>
+                            <p>Velocidades de 45-130 Mbps descarga / 10-20 Mbps carga</p>
+                        </div>
+                        <div class="plan-option">
+                            <input type="radio" name="plan-option" id="plan-standard" value="56100">
+                            <label for="plan-standard">Residencial Estándar: $56.100/mes</label>
+                            <p>Velocidades de 100-270+ Mbps descarga</p>
+                        </div>
+                    </div>
+                    
+                    <div class="btn-container">
+                        <a href="https://www.mercadolibre.com.ar/starlink-kit-mini-internet-satelital/p/MLA40656539#polycard_client=bookmarks&wid=MLA1450558069&sid=bookmarks" class="btn btn-outline" target="_blank">Ver en Mercado Libre</a>
+                        <a href="https://www.starlink.com/order?processorToken=481b6ebd-1f5d-4e59-b34b-f7cb31706726&step=0" class="btn btn-outline" target="_blank">Ver en Starlink</a>
+                    </div>
+                </div>
+                
+                <div class="option" id="option-standard">
+                    <h3>Starlink Estándar V4</h3>
+                    <div class="price">$499.999 ARS</div>
+                    <div class="specs">
+                        <p><strong>Velocidad:</strong> 100-250 Mbps</p>
+                        <p><strong>Latencia:</strong> ~20-40 ms</p>
+                        <p><strong>Consumo:</strong> 75-100 W</p>
+                    </div>
+                
+                    <div class="radio-option">
+                        <input type="radio" name="starlink-option" id="standard-option" value="499999">
+                        <label for="standard-option">Seleccionar esta opción</label>
+                    </div>
+                    
+                    <h4>Planes disponibles:</h4>
+                    <div class="plan-options">
+                        <div class="plan-option">
+                            <input type="radio" name="plan-option" id="plan-lite-standard" value="38000">
+                            <label for="plan-lite-standard">Residencial Lite: $38.000/mes</label>
+                            <p>Velocidades de 45-130 Mbps descarga / 10-20 Mbps carga</p>
+                        </div>
+                        <div class="plan-option">
+                            <input type="radio" name="plan-option" id="plan-standard-standard" value="56100">
+                            <label for="plan-standard-standard">Residencial Estándar: $56.100/mes</label>
+                            <p>Velocidades de 100-270+ Mbps descarga</p>
+                        </div>
+                    </div>
+                    
+                    <div class="btn-container">
+                        <a href="https://www.mercadolibre.com.ar/kit-starlink-de-internet-via-satelite-estandar-v4/p/MLA38764114#polycard_client=bookmarks&wid=MLA1448850481&sid=bookmarks" class="btn btn-outline" target="_blank">Ver en Mercado Libre</a>
+                        <a href="https://www.starlink.com/order?processorToken=481b6ebd-1f5d-4e59-b34b-f7cb31706726&step=0" class="btn btn-outline" target="_blank">Ver en Starlink</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section>
+            <h2>Accesorios Complementarios</h2>
+            <div class="accessories-grid">
+                <div class="accessory">
+                    <h4>TV Stick Google TV</h4>
+                    <p class="specs">Con apps para ver TV, películas y series gratis</p>
+                    <div class="price">$49.690 ARS</div>
+                    <div class="radio-option">
+                        <input type="checkbox" id="tv-stick" name="accessory" value="49690">
+                        <label for="tv-stick">Incluir en presupuesto</label>
+                    </div>
+                    <a href="https://articulo.mercadolibre.com.ar/MLA-1940814122-watch-onn-fhd-streaming-stick-2da-generacion-google-tv-8gb-_JM?searchVariation=185639171573&highlight=false&headerTopBrand=false#polycard_client=search-nordic&searchVariation=185639171573&position=4&search_layout=stack&type=item&tracking_id=16d54697-4d05-41c3-9645-f4d7f21df629" class="btn btn-outline" style="margin-top: 1rem;" target="_blank">Ver detalles</a>
+                </div>
+                
+                <div class="accessory">
+                    <h4>Router TP-Link TL-WR840N</h4>
+                    <p class="specs">Router principal para conectar a antena Starlink</p>
+                    <div class="price">$26.999 ARS</div>
+                    <div class="radio-option">
+                        <input type="checkbox" id="router" name="accessory" value="26999">
+                        <label for="router">Incluir en presupuesto</label>
+                    </div>
+                    <a href="https://www.mercadolibre.com.ar/router-tp-link-tl-wr840n-blanco/p/MLA15314118?pdp_filters=item_id:MLA855106799#wid=MLA855106799&sid=search&is_advertising=true&searchVariation=MLA15314118&backend_model=search-backend&position=2&search_layout=stack&type=pad&tracking_id=d02b1c98-2a14-4309-a6e8-27804b1f7ae8&is_advertising=true&ad_domain=VQCATCORE_LST&ad_position=2&ad_click_id=OTBiMjUzZGItNDcwOS00OGRmLWJmM2UtZjRmMWVhMGYwYmIy" class="btn btn-outline" style="margin-top: 1rem;" target="_blank">Ver detalles</a>
+                </div>
+                
+                <div class="accessory">
+                    <h4>Extensor TP-Link RE200</h4>
+                    <p class="specs">Extensor de rango WiFi para amplificar señal</p>
+                    <div class="price">$37.500 ARS</div>
+                    <div class="radio-option">
+                        <input type="checkbox" id="extensor" name="accessory" value="37500">
+                        <label for="extensor">Incluir en presupuesto</label>
+                    </div>
+                    <a href="https://www.mercadolibre.com.ar/repetidor-extensor-de-rango-wi-fi-5-doble-banda-tp-link-re200-ac750/p/MLA18243252?highlight=true&headerTopBrand=true#polycard_client=search-nordic&searchVariation=MLA18243252&wid=MLA1112423216&position=2&search_layout=grid&type=product&tracking_id=489dd6d1-eb12-4d41-ae00-8a0090cac843&sid=search" class="btn btn-outline" style="margin-top: 1rem;" target="_blank">Ver detalles</a>
+                </div>
+            </div>
+        </section>
+        
+        <section class="summary">
+            <h2>Resumen de Presupuesto</h2>
+            <div class="plan-info">
+                <strong>Plan mensual seleccionado:</strong> <span id="selected-plan-text">Residencial Lite ($38.000/mes)</span>
+                <p>(Este costo no está incluido en el total del presupuesto, es solo informativo)</p>
+            </div>
+            <ul class="cost-list" id="dynamic-cost-list">
+                <!-- Los elementos se agregarán dinámicamente aquí -->
+            </ul>
+            <div class="total">
+                <span>Total aproximado:</span>
+                <span>$<span id="total-price">0</span></span>
+            </div>
+        </section>
+        
+        <div style="text-align: center;">
+            <a href="#" class="btn whatsapp-btn" id="whatsapp-btn" target="_blank">Solicitar instalación por WhatsApp</a>
+        </div>
+    </main>
+
+    <footer>
+      
+            <div class="footer-copyright">© 2025 Todos los derechos reservados</div>
+        </div>
+    </footer>
+
+    <script>
+        // Función para formatear números con separadores de miles
+        function formatNumber(num) {
+            return num.toLocaleString('es-AR');
+        }
+
+        // Función para actualizar el texto del plan seleccionado
+        function updateSelectedPlanText() {
+            const selectedPlan = document.querySelector('input[name="plan-option"]:checked');
+            const planText = selectedPlan.nextElementSibling.textContent.split(':')[0];
+            const planPrice = selectedPlan.value;
+            document.getElementById('selected-plan-text').textContent = `${planText} ($${formatNumber(parseInt(planPrice))}/mes)`;
+        }
+
+        // Función para actualizar la lista de costos dinámicamente
+        function updateCostList() {
+            const costList = document.getElementById('dynamic-cost-list');
+            costList.innerHTML = ''; // Limpiar lista
+            
+            // Agregar equipo seleccionado
+            const starlinkOption = document.querySelector('input[name="starlink-option"]:checked');
+            const starlinkPrice = starlinkOption.value;
+            const starlinkName = starlinkOption.id === "mini-option" ? "Kit Starlink Mini" : "Kit Starlink Estándar";
+            
+            addCostItem(costList, starlinkName, starlinkPrice);
+            
+            // Agregar accesorios seleccionados
+            if (document.getElementById('tv-stick').checked) {
+                addCostItem(costList, "TV Stick Google TV", "49690");
+                addCostItem(costList, "Instalación TV stick", "35000");
+            }
+            if (document.getElementById('router').checked) {
+                addCostItem(costList, "Router TP-Link", "26999");
+            }
+            if (document.getElementById('extensor').checked) {
+                addCostItem(costList, "Extensor TP-Link", "37500");
+            }
+            
+            // Agregar instalación de antena (siempre visible)
+            addCostItem(costList, "Instalación antena con router/extensor", "150000");
+        }
+
+        // Función auxiliar para agregar items a la lista de costos
+        function addCostItem(list, name, value) {
+            const li = document.createElement('li');
+            li.innerHTML = `
+                <span>${name}:</span>
+                <span>$${formatNumber(parseInt(value))}</span>
+            `;
+            list.appendChild(li);
+        }
+
+        // Función para generar el mensaje de WhatsApp
+        function generateWhatsAppMessage() {
+            let message = "Hola, estoy interesado en el servicio Starlink. Aquí está mi selección:\n\n";
+            
+            // Equipo seleccionado
+            const starlinkOption = document.querySelector('input[name="starlink-option"]:checked');
+            if (starlinkOption.id === "mini-option") {
+                message += `• Kit Starlink Mini: $189.000\n`;
+            } else {
+                message += `• Kit Starlink Estándar: $499.999\n`;
+            }
+            
+            // Plan seleccionado
+            const selectedPlan = document.querySelector('input[name="plan-option"]:checked');
+            const planText = selectedPlan.nextElementSibling.textContent.split(':')[0];
+            message += `• ${planText}: $${formatNumber(parseInt(selectedPlan.value))}/mes\n`;
+            
+            // Accesorios seleccionados
+            const hasAccessories = document.getElementById('tv-stick').checked || 
+                                 document.getElementById('router').checked || 
+                                 document.getElementById('extensor').checked;
+            
+            if (hasAccessories) {
+                message += "\nAccesorios:\n";
+                if (document.getElementById('tv-stick').checked) {
+                    message += `• TV Stick Google TV: $49.690\n`;
+                    message += `• Instalación TV Stick: $35.000\n`;
+                }
+                if (document.getElementById('router').checked) {
+                    message += `• Router TP-Link: $26.999\n`;
+                }
+                if (document.getElementById('extensor').checked) {
+                    message += `• Extensor de Rango: $37.500\n`;
+                }
+            }
+            
+            // Mano de obra
+            message += `\nInstalación:\n`;
+            message += `• Instalación antena con router/extensor: $150.000\n`;
+            if (document.getElementById('tv-stick').checked) {
+                message += `• Instalación TV stick: $35.000\n`;
+            }
+            
+            // Total
+            message += `\nTOTAL PRESUPUESTO: $${document.getElementById('total-price').textContent}`;
+            
+            return encodeURIComponent(message);
+        }
+
+        // Función para calcular el total
+        function calculateTotal() {
+            let total = 0;
+            
+            // Obtener la opción seleccionada de Starlink
+            const starlinkOption = document.querySelector('input[name="starlink-option"]:checked');
+            if (starlinkOption) {
+                total += parseInt(starlinkOption.value);
+            }
+            
+            // Obtener accesorios seleccionados
+            if (document.getElementById('tv-stick').checked) {
+                total += 49690; // TV Stick
+                total += 35000; // Instalación TV Stick
+            }
+            if (document.getElementById('router').checked) {
+                total += 26999; // Router
+            }
+            if (document.getElementById('extensor').checked) {
+                total += 37500; // Extensor
+            }
+            
+            // Costo fijo de instalación antena
+            total += 150000;
+            
+            // Formatear el número con separadores de miles
+            const formattedTotal = formatNumber(total);
+            
+            // Actualizar el total en la página
+            document.getElementById('total-price').textContent = formattedTotal;
+            
+            // Actualizar el enlace de WhatsApp
+            const whatsappBtn = document.getElementById('whatsapp-btn');
+            whatsappBtn.href = `https://wa.me/542266661409?text=${generateWhatsAppMessage()}`;
+            
+            // Actualizar lista de costos
+            updateCostList();
+            
+            // Resaltar plan seleccionado
+            document.querySelectorAll('.plan-option').forEach(plan => {
+                plan.classList.toggle('selected-plan', plan.querySelector('input').checked);
+            });
+            
+            // Resaltar opciones seleccionadas
+            document.getElementById('option-mini').classList.toggle('selected', starlinkOption.id === "mini-option");
+            document.getElementById('option-standard').classList.toggle('selected', starlinkOption.id === "standard-option");
+        }
+        
+        // Escuchar cambios en los inputs
+        document.querySelectorAll('input[type="radio"], input[type="checkbox"]').forEach(input => {
+            input.addEventListener('change', () => {
+                calculateTotal();
+                updateSelectedPlanText();
+            });
+        });
+        
+        // Inicializar
+        calculateTotal();
+        updateSelectedPlanText();
+    </script>
+</body>
+</html>
