@@ -4,9 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Presupuesto Starlink y Accesorios</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
@@ -184,8 +181,10 @@
         }
 
         .option.selected {
-            background-color: #f5f9ff;
-            border-color: var(--primary-light);
+            border: 2px solid #00bcd4; /* Mantener el borde visible */
+            box-shadow: 0 4px 6px rgba(0, 188, 212, 0.3); /* Mantener el efecto de sombra */
+            transition: all 0.3s ease-in-out;
+            background-color: transparent; /* Quitar el fondo de color */
         }
 
         .option.selected::before {
@@ -284,19 +283,28 @@
         }
 
         .plan-option {
-            background-color: var(--light);
+            background-color: var(--light); /* Fondo claro */
             padding: 1.25rem;
             border-radius: var(--border-radius-sm);
             margin-bottom: 0.8rem;
             transition: var(--transition);
-            border: 1px solid var(--light-gray);
+            border: 2px solid var(--light-gray); /* Borde visible */
             position: relative;
+            cursor: pointer;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra ligera */
+        }
+
+        .plan-option:hover {
+            background-color: #e3f2fd; /* Fondo más claro al pasar el mouse */
+            border-color: var(--primary); /* Borde más visible al pasar el mouse */
+            box-shadow: 0 4px 6px rgba(33, 150, 243, 0.3); /* Sombra más intensa */
         }
 
         .plan-option.selected-plan {
-            background-color: #f0f7ff;
-            border-color: var(--primary-light);
-            box-shadow: 0 0 0 2px var(--primary-light);
+            background-color: #bbdefb; /* Fondo azul para el plan seleccionado */
+            border: 2px solid #2196f3; /* Borde azul más visible */
+            box-shadow: 0 4px 6px rgba(33, 150, 243, 0.5); /* Sombra más intensa */
+            transition: all 0.3s ease-in-out;
         }
 
         .plan-option input[type="radio"] {
@@ -405,6 +413,13 @@
             box-shadow: var(--shadow-lg);
         }
 
+        .accessory.selected {
+            background-color: #e0f7fa; /* Color de fondo visible */
+            border: 2px solid #00bcd4; /* Borde más visible */
+            box-shadow: 0 4px 6px rgba(0, 188, 212, 0.3);
+            transition: all 0.3s ease-in-out;
+        }
+
         .accessory h4 {
             margin-bottom: 0.75rem;
             display: flex;
@@ -474,12 +489,12 @@
         }
 
         .summary {
-            background-color: var(--lighter);
-            border-radius: var(--border-radius);
+            background-color: #f8fafc;
+            border-radius: 12px;
             padding: 2.5rem;
-            box-shadow: var(--shadow-md);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             margin: 3rem 0;
-            border: 1px solid var(--light-gray);
+            border: 1px solid #e2e8f0;
         }
 
         .plan-info {
@@ -532,17 +547,17 @@
         .total {
             font-size: 1.5rem;
             font-weight: 700;
-            color: var(--darker);
+            color: #1e293b;
             margin-top: 1.75rem;
             padding-top: 1.75rem;
-            border-top: 2px solid var(--light-gray);
+            border-top: 2px solid #e2e8f0;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
         .total span:last-child {
-            color: var(--primary);
+            color: #2563eb;
             font-size: 1.8rem;
         }
 
@@ -698,6 +713,19 @@
         input[type="radio"], input[type="checkbox"] {
             cursor: pointer;
         }
+
+        .option, .accessory {
+            background-color: #e0f7fa; /* Color de fondo visible */
+            border: 2px solid #00bcd4; /* Borde más visible */
+            box-shadow: 0 4px 6px rgba(0, 188, 212, 0.3); /* Efecto de sombra */
+            transition: all 0.3s ease-in-out;
+            border-radius: var(--border-radius); /* Mantener bordes redondeados */
+        }
+
+        .option:hover, .accessory:hover {
+            transform: translateY(-5px); /* Efecto de elevación al pasar el mouse */
+            box-shadow: 0 6px 8px rgba(0, 188, 212, 0.4); /* Sombra más intensa */
+        }
     </style>
 </head>
 <body>
@@ -812,9 +840,10 @@
                         <input type="checkbox" id="tv-stick" name="accessory" value="49690">
                         <label for="tv-stick">Incluir en presupuesto</label>
                     </div>
-                    <a href="https://articulo.mercadolibre.com.ar/MLA-1940814122-watch-onn-fhd-streaming-stick-2da-generacion-google-tv-8gb-_JM?searchVariation=185639171573&highlight=false&headerTopBrand=false#polycard_client=search-nordic&searchVariation=185639171573&position=4&search_layout=stack&type=item&tracking_id=16d54697-4d05-41c3-9645-f4d7f21df629" class="btn btn-outline" style="margin-top: 1rem;" target="_blank">
-                        <i class="fas fa-external-link-alt"></i> Ver detalles
-                    </a>
+                    <div class="quantity-option">
+                        <label for="tv-stick-quantity">Cantidad:</label>
+                        <input type="number" id="tv-stick-quantity" name="tv-stick-quantity" value="1" min="1" style="width: 60px;">
+                    </div>
                 </div>
                 
                 <div class="accessory">
@@ -827,9 +856,6 @@
                         <input type="checkbox" id="router" name="accessory" value="26999">
                         <label for="router">Incluir en presupuesto</label>
                     </div>
-                    <a href="https://www.mercadolibre.com.ar/router-tp-link-tl-wr840n-blanco/p/MLA15314118?pdp_filters=item_id:MLA855106799#wid=MLA855106799&sid=search&is_advertising=true&searchVariation=MLA15314118&backend_model=search-backend&position=2&search_layout=stack&type=pad&tracking_id=d02b1c98-2a14-4309-a6e8-27804b1f7ae8&is_advertising=true&ad_domain=VQCATCORE_LST&ad_position=2&ad_click_id=OTBiMjUzZGItNDcwOS00OGRmLWJmM2UtZjRmMWVhMGYwYmIy" class="btn btn-outline" style="margin-top: 1rem;" target="_blank">
-                        <i class="fas fa-external-link-alt"></i> Ver detalles
-                    </a>
                 </div>
                 
                 <div class="accessory">
@@ -842,9 +868,6 @@
                         <input type="checkbox" id="extensor" name="accessory" value="37500">
                         <label for="extensor">Incluir en presupuesto</label>
                     </div>
-                    <a href="https://www.mercadolibre.com.ar/repetidor-extensor-de-rango-wi-fi-5-doble-banda-tp-link-re200-ac750/p/MLA18243252?highlight=true&headerTopBrand=true#polycard_client=search-nordic&searchVariation=MLA18243252&wid=MLA1112423216&position=2&search_layout=grid&type=product&tracking_id=489dd6d1-eb12-4d41-ae00-8a0090cac843&sid=search" class="btn btn-outline" style="margin-top: 1rem;" target="_blank">
-                        <i class="fas fa-external-link-alt"></i> Ver detalles
-                    </a>
                 </div>
             </div>
         </section>
@@ -882,172 +905,137 @@
             return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
         }
 
-        // Función para actualizar el texto del plan seleccionado
-        function updateSelectedPlanText() {
-            const selectedPlan = document.querySelector('input[name="plan-option"]:checked');
-            const planText = selectedPlan.nextElementSibling.textContent.split(':')[0];
-            const planPrice = selectedPlan.value;
-            document.getElementById('selected-plan-text').textContent = `${planText} ($${formatNumber(parseInt(planPrice))}/mes)`;
+        // Función para calcular el total del presupuesto
+        function calculateTotal() {
+            let total = 0;
+
+            // Obtener precio de la opción de Starlink seleccionada
+            const starlinkOption = document.querySelector('input[name="starlink-option"]:checked');
+            if (starlinkOption) {
+                total += parseFloat(starlinkOption.value);
+            }
+
+            // Calcular precio de accesorios seleccionados
+            const accessoryOptions = document.querySelectorAll('input[name="accessory"]:checked');
+            accessoryOptions.forEach(option => {
+                // Si es TV Stick Google TV, calcular costo por cantidad seleccionada
+                if (option.id === 'tv-stick') {
+                    const quantity = parseInt(document.getElementById('tv-stick-quantity').value) || 0;
+                    if (quantity > 0) {
+                        const tvStickCost = 49690 * quantity; // Precio del TV Stick por cantidad
+                        const installationCost = 35000 * quantity; // Costo de instalación por cantidad
+                        total += tvStickCost + installationCost; // Sumar ambos costos al total
+                    }
+                } else {
+                    // Sumar el costo de otros accesorios seleccionados
+                    total += parseFloat(option.value);
+                }
+            });
+
+            // Agregar costo fijo de instalación de antena
+            total += 150000;
+
+            // Actualizar el total en el resumen
+            const totalPriceElem = document.getElementById('total-price');
+            totalPriceElem.textContent = formatNumber(total);
+
+            // Actualizar la lista de costos
+            updateCostList();
         }
 
-        // Función para actualizar la lista de costos dinámicamente
+        // Función para actualizar el resumen de presupuesto
         function updateCostList() {
             const costList = document.getElementById('dynamic-cost-list');
             costList.innerHTML = ''; // Limpiar lista
-            
+
             // Agregar equipo seleccionado
             const starlinkOption = document.querySelector('input[name="starlink-option"]:checked');
-            const starlinkPrice = starlinkOption.value;
-            const starlinkName = starlinkOption.id === "mini-option" ? "Kit Starlink Mini" : "Kit Starlink Estándar";
-            
-            addCostItem(costList, starlinkName, starlinkPrice);
-            
+            if (starlinkOption) {
+                const starlinkName = starlinkOption.closest('.option').querySelector('h3').textContent.trim();
+                const starlinkPrice = parseFloat(starlinkOption.value);
+                addCostItem(costList, starlinkName, starlinkPrice);
+            }
+
             // Agregar accesorios seleccionados
-            if (document.getElementById('tv-stick').checked) {
-                addCostItem(costList, "TV Stick Google TV", "49690");
-                addCostItem(costList, "Instalación TV stick", "35000");
-            }
-            if (document.getElementById('router').checked) {
-                addCostItem(costList, "Router TP-Link", "26999");
-            }
-            if (document.getElementById('extensor').checked) {
-                addCostItem(costList, "Extensor TP-Link", "37500");
-            }
-            
-            // Agregar instalación de antena (siempre visible)
-            addCostItem(costList, "Instalación antena con router/extensor", "150000");
+            const accessoryOptions = document.querySelectorAll('input[name="accessory"]:checked');
+            accessoryOptions.forEach(option => {
+                const accessoryName = option.closest('.accessory').querySelector('h4').textContent.trim();
+
+                // Si es TV Stick Google TV, agregar costo por cantidad seleccionada
+                if (option.id === 'tv-stick') {
+                    const quantity = parseInt(document.getElementById('tv-stick-quantity').value) || 0;
+                    if (quantity > 0) {
+                        const tvStickCost = 49690 * quantity; // Precio del TV Stick por cantidad
+                        const installationCost = 35000 * quantity; // Costo de instalación por cantidad
+                        addCostItem(costList, `${accessoryName} (x${quantity})`, tvStickCost);
+                        addCostItem(costList, `Instalación TV Stick (x${quantity})`, installationCost);
+                    }
+                } else {
+                    // Agregar otros accesorios seleccionados
+                    const accessoryPrice = parseFloat(option.value);
+                    addCostItem(costList, accessoryName, accessoryPrice);
+                }
+            });
+
+            // Agregar costo fijo de instalación de antena
+            addCostItem(costList, "Instalación antena con router/extensor", 150000);
         }
 
-        // Función auxiliar para agregar items a la lista de costos
+        // Función auxiliar para agregar items al resumen
         function addCostItem(list, name, value) {
             const li = document.createElement('li');
-            li.classList.add('fade-in');
             li.innerHTML = `
                 <span>${name}:</span>
-                <span>$${formatNumber(parseInt(value))}</span>
+                <span>$${formatNumber(value)}</span>
             `;
             list.appendChild(li);
         }
 
-        // Función para generar el mensaje de WhatsApp
-        function generateWhatsAppMessage() {
-            let message = "Hola, estoy interesado en el servicio Starlink. Aquí está mi selección:\n\n";
-            
-            // Equipo seleccionado
-            const starlinkOption = document.querySelector('input[name="starlink-option"]:checked');
-            if (starlinkOption.id === "mini-option") {
-                message += `• Kit Starlink Mini: $189.000\n`;
-            } else {
-                message += `• Kit Starlink Estándar: $499.999\n`;
+        // Función para actualizar el texto del plan seleccionado
+        function updateSelectedPlanText() {
+            const planOption = document.querySelector('input[name="plan-option"]:checked');
+            if (planOption) {
+                const planLabel = planOption.nextElementSibling.textContent.trim();
+                const planPrice = parseFloat(planOption.value);
+                const selectedPlanText = document.getElementById('selected-plan-text');
+                selectedPlanText.innerHTML = `${planLabel} (<span class="text-primary">${formatNumber(planPrice)} ARS</span>/mes)`;
             }
-            
-            // Plan seleccionado
-            const selectedPlan = document.querySelector('input[name="plan-option"]:checked');
-            const planText = selectedPlan.nextElementSibling.textContent.split(':')[0];
-            message += `• ${planText}: $${formatNumber(parseInt(selectedPlan.value))}/mes\n`;
-            
-            // Accesorios seleccionados
-            const hasAccessories = document.getElementById('tv-stick').checked || 
-                                 document.getElementById('router').checked || 
-                                 document.getElementById('extensor').checked;
-            
-            if (hasAccessories) {
-                message += "\nAccesorios:\n";
-                if (document.getElementById('tv-stick').checked) {
-                    message += `• TV Stick Google TV: $49.690\n`;
-                    message += `• Instalación TV Stick: $35.000\n`;
-                }
-                if (document.getElementById('router').checked) {
-                    message += `• Router TP-Link: $26.999\n`;
-                }
-                if (document.getElementById('extensor').checked) {
-                    message += `• Extensor de Rango: $37.500\n`;
-                }
-            }
-            
-            // Mano de obra
-            message += `\nInstalación:\n`;
-            message += `• Instalación antena con router/extensor: $150.000\n`;
-            if (document.getElementById('tv-stick').checked) {
-                message += `• Instalación TV stick: $35.000\n`;
-            }
-            
-            // Total
-            message += `\nTOTAL PRESUPUESTO: $${document.getElementById('total-price').textContent}`;
-            
-            return encodeURIComponent(message);
         }
 
-        // Función para calcular el total
-        function calculateTotal() {
-            let total = 0;
-            
-            // Obtener la opción seleccionada de Starlink
-            const starlinkOption = document.querySelector('input[name="starlink-option"]:checked');
-            if (starlinkOption) {
-                total += parseInt(starlinkOption.value);
-            }
-            
-            // Obtener accesorios seleccionados
-            if (document.getElementById('tv-stick').checked) {
-                total += 49690; // TV Stick
-                total += 35000; // Instalación TV Stick
-            }
-            if (document.getElementById('router').checked) {
-                total += 26999; // Router
-            }
-            if (document.getElementById('extensor').checked) {
-                total += 37500; // Extensor
-            }
-            
-            // Costo fijo de instalación antena
-            total += 150000;
-            
-            // Formatear el número con separadores de miles
-            const formattedTotal = formatNumber(total);
-            
-            // Actualizar el total en la página
-            document.getElementById('total-price').textContent = formattedTotal;
-            
-            // Actualizar el enlace de WhatsApp
-            const whatsappBtn = document.getElementById('whatsapp-btn');
-            whatsappBtn.href = `https://wa.me/542266661409?text=${generateWhatsAppMessage()}`;
-            
-            // Actualizar lista de costos
-            updateCostList();
-            
-            // Resaltar plan seleccionado
+        // Función para actualizar el estilo del plan seleccionado
+        function updatePlanSelectionStyles() {
+            // Remover la clase 'selected-plan' de todos los planes
             document.querySelectorAll('.plan-option').forEach(plan => {
-                plan.classList.toggle('selected-plan', plan.querySelector('input').checked);
+                plan.classList.remove('selected-plan');
             });
-            
-            // Resaltar opciones seleccionadas
-            document.getElementById('option-mini').classList.toggle('selected', starlinkOption.id === "mini-option");
-            document.getElementById('option-standard').classList.toggle('selected', starlinkOption.id === "standard-option");
+
+            // Agregar la clase 'selected-plan' al plan seleccionado
+            const selectedPlanOption = document.querySelector('input[name="plan-option"]:checked');
+            if (selectedPlanOption) {
+                selectedPlanOption.closest('.plan-option').classList.add('selected-plan');
+            }
         }
-        
+
+        // Escuchar cambios en los radios de los planes
+        document.querySelectorAll('input[name="plan-option"]').forEach(input => {
+            input.addEventListener('change', () => {
+                updateSelectedPlanText();
+                updatePlanSelectionStyles();
+            });
+        });
+
         // Escuchar cambios en los inputs
-        document.querySelectorAll('input[type="radio"], input[type="checkbox"]').forEach(input => {
+        document.querySelectorAll('input[type="radio"], input[type="checkbox"], input[type="number"]').forEach(input => {
             input.addEventListener('change', () => {
                 calculateTotal();
                 updateSelectedPlanText();
             });
         });
-        
+
         // Inicializar
         calculateTotal();
         updateSelectedPlanText();
-
-        // Agregar animaciones a los elementos al cargar la página
-        document.addEventListener('DOMContentLoaded', () => {
-            const elements = document.querySelectorAll('.fade-in');
-            elements.forEach((el, index) => {
-                setTimeout(() => {
-                    el.style.opacity = '1';
-                    el.style.transform = 'translateY(0)';
-                }, index * 100);
-            });
-        });
+        updatePlanSelectionStyles();
     </script>
 </body>
 </html>
