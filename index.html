@@ -1016,6 +1016,72 @@
             }
         }
 
+        // Función para generar el mensaje de WhatsApp
+function generateWhatsAppMessage() {
+    let message = "¡Hola! Me gustaría solicitar una instalación con los siguientes detalles:\n\n";
+
+    // Agregar equipo seleccionado
+    const starlinkOption = document.querySelector('input[name="starlink-option"]:checked');
+    if (starlinkOption) {
+        const starlinkName = starlinkOption.closest('.option').querySelector('h3').textContent.trim();
+        const starlinkPrice = parseFloat(starlinkOption.value);
+        message += `Equipo seleccionado: ${starlinkName} - $${formatNumber(starlinkPrice)}\n`;
+    }
+
+    // Agregar plan seleccionado
+    const planOption = document.querySelector('input[name="plan-option"]:checked');
+    if (planOption) {
+        const planLabel = planOption.nextElementSibling.textContent.trim();
+        message += `Plan seleccionado: ${planLabel}\n`;
+    }
+
+    // Agregar accesorios seleccionados
+    const accessoryOptions = document.querySelectorAll('input[name="accessory"]:checked');
+    if (accessoryOptions.length > 0) {
+        message += "\nAccesorios seleccionados:\n";
+        accessoryOptions.forEach(option => {
+            const accessoryName = option.closest('.accessory').querySelector('h4').textContent.trim();
+
+            // Si es TV Stick Google TV, agregar cantidad y costos
+            if (option.id === 'tv-stick') {
+                const quantity = parseInt(document.getElementById('tv-stick-quantity').value) || 0;
+                if (quantity > 0) {
+                    const tvStickCost = 49690 * quantity;
+                    const installationCost = 35000 * quantity;
+                    message += `- ${accessoryName} (x${quantity}): $${formatNumber(tvStickCost)}\n`;
+                    message += `  Instalación TV Stick (x${quantity}): $${formatNumber(installationCost)}\n`;
+                }
+            } else {
+                const accessoryPrice = parseFloat(option.value);
+                message += `- ${accessoryName}: $${formatNumber(accessoryPrice)}\n`;
+            }
+        });
+    }
+
+    // Agregar costo fijo de instalación de antena
+    message += `\nCosto fijo: Instalación antena con router/extensor - $150.000\n`;
+
+    // Agregar total aproximado
+    const totalPriceElem = document.getElementById('total-price').textContent;
+    message += `\nTotal aproximado: $${totalPriceElem}\n`;
+
+    return message;
+}
+
+// Función para redirigir a WhatsApp
+function redirectToWhatsApp() {
+    const phoneNumber = "2266661409"; // Número de WhatsApp
+    const message = encodeURIComponent(generateWhatsAppMessage());
+    const whatsappURL = `https://wa.me/${phoneNumber}?text=${message}`;
+    window.open(whatsappURL, "_blank");
+}
+
+// Escuchar clic en el botón de WhatsApp
+document.getElementById('whatsapp-btn').addEventListener('click', (e) => {
+    e.preventDefault(); // Evitar comportamiento predeterminado del enlace
+    redirectToWhatsApp();
+});
+
         // Escuchar cambios en los radios de los planes
         document.querySelectorAll('input[name="plan-option"]').forEach(input => {
             input.addEventListener('change', () => {
