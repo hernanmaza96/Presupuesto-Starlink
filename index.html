@@ -9,6 +9,8 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     />
     <link rel="icon" type="image/png" href="logo.png" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <style>
       @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Open+Sans:wght@400;600&display=swap');
       :root {
@@ -35,6 +37,14 @@
         --border-radius: 22px;
         --border-radius-sm: 14px;
         --transition: all 0.22s cubic-bezier(0.4, 0, 0.2, 1);
+        --darkmode-bg: #181f2a;
+        --darkmode-card: #232c3a;
+        --darkmode-text: #f1f5f9;
+        --darkmode-primary: #60a5fa;
+        --darkmode-secondary: #34d399;
+        --darkmode-accent: #fbbf24;
+        --darkmode-border: #334155;
+        --darkmode-shadow: 0 6px 24px rgba(30,41,59,0.25);
       }
 
       body {
@@ -43,6 +53,10 @@
         color: var(--dark);
         min-height: 100vh;
         letter-spacing: 0.01em;
+      }
+      body.darkmode {
+        background: linear-gradient(120deg, #181f2a 0%, #232c3a 100%);
+        color: var(--darkmode-text);
       }
       .container {
         max-width: 1100px;
@@ -58,6 +72,10 @@
         margin-bottom: 2.7rem;
         position: relative;
         overflow: hidden;
+      }
+      body.darkmode header {
+        background: linear-gradient(135deg, var(--darkmode-primary), var(--primary-dark));
+        color: var(--darkmode-text);
       }
       header h1 {
         font-family: 'Montserrat', Arial, sans-serif;
@@ -110,6 +128,11 @@
         font-weight: 600;
         letter-spacing: 0.2px;
       }
+      body.darkmode .location {
+        background: #232c3a;
+        color: var(--darkmode-primary);
+        border-color: var(--darkmode-primary);
+      }
       .location i {
         margin-right: 0.6rem;
       }
@@ -129,6 +152,14 @@
         transition: var(--transition);
         position: relative;
         overflow: hidden;
+      }
+      body.darkmode .option,
+      body.darkmode .accessory,
+      body.darkmode .summary {
+        background: var(--darkmode-card);
+        color: var(--darkmode-text);
+        border-color: var(--darkmode-border);
+        box-shadow: var(--darkmode-shadow);
       }
       .option.selected {
         border: 2.7px solid var(--primary);
@@ -181,10 +212,18 @@
         transition: var(--transition);
         cursor: pointer;
       }
+      body.darkmode .plan-option {
+        background: #1e293b;
+        border-color: var(--darkmode-border);
+      }
       .plan-option.selected-plan {
         background: #e3eafe;
         border: 2.5px solid var(--primary);
         box-shadow: 0 4px 16px rgba(37, 99, 235, 0.09);
+      }
+      body.darkmode .plan-option.selected-plan {
+        background: #334155;
+        border-color: var(--darkmode-primary);
       }
       .plan-option:hover {
         background: #f0f7ff;
@@ -221,19 +260,41 @@
         color: var(--lighter);
         box-shadow: 0 4px 12px rgba(37, 99, 235, 0.13);
       }
-      .btn-primary:hover {
+      body.darkmode .btn-primary,
+      body.darkmode .whatsapp-btn {
+        background: linear-gradient(90deg, var(--darkmode-secondary), var(--darkmode-primary));
+        color: #fff;
+      }
+      .btn-primary:hover,
+      .whatsapp-btn:hover {
         background: var(--primary-dark);
         transform: translateY(-2px) scale(1.03);
+        color: #fff;
+        box-shadow: 0 4px 12px rgba(37, 99, 235, 0.13);
+      }
+      body.darkmode .btn-primary:hover,
+      body.darkmode .whatsapp-btn:hover {
+        background: var(--darkmode-primary);
+        color: #fff;
+        box-shadow: 0 7px 22px rgba(16, 185, 129, 0.18);
       }
       .btn-outline {
         background: transparent;
         border: 2px solid var(--primary);
         color: var(--primary);
       }
+      body.darkmode .btn-outline {
+        border-color: var(--darkmode-primary);
+        color: var(--darkmode-primary);
+      }
       .btn-outline:hover {
         background: var(--primary);
         color: var(--lighter);
         box-shadow: 0 4px 12px rgba(37, 99, 235, 0.13);
+      }
+      body.darkmode .btn-outline:hover {
+        background: var(--darkmode-primary);
+        color: #fff;
       }
       .accessories-grid {
         display: grid;
@@ -252,6 +313,12 @@
         flex-direction: column;
         transition: var(--transition);
         overflow: hidden;
+      }
+      body.darkmode .accessory {
+        background: var(--darkmode-card);
+        color: var(--darkmode-text);
+        border-color: var(--darkmode-border);
+        box-shadow: var(--darkmode-shadow);
       }
       .accessory.selected {
         background: #e3f8fa;
@@ -291,6 +358,12 @@
         position: relative;
         overflow: hidden;
       }
+      body.darkmode .summary {
+        background: var(--darkmode-card);
+        color: var(--darkmode-text);
+        border-color: var(--darkmode-border);
+        box-shadow: var(--darkmode-shadow);
+      }
       .summary:before {
         content: '';
         position: absolute;
@@ -308,6 +381,10 @@
         display: flex;
         flex-direction: column;
         box-shadow: 0 2px 8px rgba(37, 99, 235, 0.04);
+      }
+      body.darkmode .plan-info {
+        background: #334155;
+        border-color: var(--darkmode-primary);
       }
       .plan-info strong {
         color: var(--primary);
@@ -345,67 +422,89 @@
         color: var(--primary-dark);
         font-family: 'Montserrat', Arial, sans-serif;
       }
-      .total {
-        font-size: 1.8rem;
+      /* Mejoras para modo oscuro en resumen de presupuesto */
+      body.darkmode .cost-list li span:first-child {
+        color: var(--darkmode-text);
+        font-weight: 600;
+        letter-spacing: 0.2px;
+        text-shadow: 0 1px 2px rgba(0,0,0,0.13);
+      }
+      body.darkmode .cost-list li span:last-child {
+        color: var(--darkmode-primary);
         font-weight: 800;
-        color: #1e293b;
-        margin-top: 2.2rem;
-        padding-top: 2.2rem;
-        border-top: 2.5px solid var(--primary-light);
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        letter-spacing: 0.5px;
+        text-shadow: 0 1px 2px rgba(0,0,0,0.13);
       }
-      .total span:last-child {
-        color: #2563eb;
-        font-size: 2.2rem;
-        font-family: 'Montserrat', Arial, sans-serif;
+      /* Mejoras para modo oscuro en resumen de presupuesto y textos clave */
+      body.darkmode .cost-list li span:first-child,
+      body.darkmode .summary h2,
+      body.darkmode .summary h3,
+      body.darkmode .summary h4,
+      body.darkmode .plan-info strong,
+      body.darkmode .plan-info p,
+      body.darkmode .total span,
+      body.darkmode .user-contact label,
+      body.darkmode .user-contact input,
+      body.darkmode .user-contact .input-icon {
+        color: var(--darkmode-text) !important;
+        font-family: 'Montserrat', Arial, sans-serif !important;
+        text-shadow: 0 1px 2px rgba(0,0,0,0.13);
       }
-      .whatsapp-btn {
-        background: linear-gradient(90deg, var(--secondary), var(--primary));
-        color: var(--lighter);
-        font-size: 1.18rem;
-        padding: 1.15rem 2.4rem;
-        margin: 2.7rem auto 0 auto;
-        display: inline-flex;
-        align-items: center;
-        gap: 0.95rem;
-        border-radius: 50px;
-        box-shadow: 0 4px 16px rgba(16, 185, 129, 0.13);
-        transition: var(--transition);
-        border: none;
-        font-family: 'Montserrat', Arial, sans-serif;
+      body.darkmode .cost-list li span:last-child,
+      body.darkmode .total span:last-child {
+        color: var(--darkmode-primary) !important;
         font-weight: 800;
-        letter-spacing: 0.7px;
+        text-shadow: 0 1px 2px rgba(0,0,0,0.13);
       }
-      .whatsapp-btn:hover {
-        background: linear-gradient(90deg, var(--primary), var(--secondary));
-        transform: translateY(-2px) scale(1.04);
-        box-shadow: 0 7px 22px rgba(16, 185, 129, 0.18);
-        color: #fff;
+      body.darkmode .plan-info {
+        background: #334155;
+        border-color: var(--darkmode-primary);
       }
-      .badge {
-        display: inline-block;
-        padding: 0.38rem 0.8rem;
-        border-radius: 50px;
-        font-size: 0.82rem;
-        font-weight: 700;
-        text-transform: uppercase;
-        letter-spacing: 0.6px;
-        font-family: 'Montserrat', Arial, sans-serif;
+      body.darkmode .user-contact {
+        background: rgba(35,44,58,0.92);
+        border-color: var(--darkmode-primary);
+        box-shadow: 0 8px 32px rgba(96,165,250,0.13), 0 1.5px 0 0 var(--darkmode-primary);
       }
-      .badge-primary {
-        background: var(--primary-light);
-        color: var(--primary-dark);
+      body.darkmode .user-contact input {
+        background: rgba(35,44,58,0.92);
+        color: var(--darkmode-text);
+        border-color: var(--darkmode-primary);
       }
-      .badge-secondary {
-        background: #d1fae5;
-        color: var(--secondary-dark);
+      body.darkmode .user-contact .input-group label {
+        color: var(--darkmode-primary);
       }
-      .badge-accent {
-        background: #fef3c7;
-        color: var(--accent-dark);
+      body.darkmode .user-contact .input-icon {
+        color: var(--darkmode-primary);
+      }
+      body.darkmode .user-contact .input-group:not(:last-child)::after {
+        background: linear-gradient(90deg, var(--darkmode-primary), var(--darkmode-secondary), var(--darkmode-primary));
+      }
+      body.darkmode .summary {
+        background: var(--darkmode-card);
+        color: var(--darkmode-text);
+        border-color: var(--darkmode-border);
+        box-shadow: var(--darkmode-shadow);
+      }
+      body.darkmode .summary:before {
+        background: linear-gradient(90deg, var(--darkmode-primary), var(--darkmode-secondary));
+        opacity: 0.18;
+      }
+      body.darkmode .plan-info strong {
+        color: var(--darkmode-primary);
+      }
+      body.darkmode .plan-info p {
+        color: #b6c6e3;
+      }
+      body.darkmode .badge-primary {
+        background: #334155;
+        color: var(--darkmode-primary);
+      }
+      body.darkmode .badge-secondary {
+        background: #064e3b;
+        color: var(--darkmode-secondary);
+      }
+      body.darkmode .badge-accent {
+        background: #fbbf24;
+        color: #232c3a;
       }
       footer {
         background: var(--darker);
@@ -417,6 +516,10 @@
         align-items: center;
         text-align: center;
         border-radius: 40px 40px 0 0;
+      }
+      body.darkmode footer {
+        background: #111827;
+        color: #cbd5e1;
       }
       .footer-content {
         display: flex;
@@ -482,6 +585,63 @@
         border: 1.5px solid var(--primary);
         outline: none;
       }
+      /* Animaciones fade-in */
+      .fade-in {
+        opacity: 0;
+        transform: translateY(30px);
+        animation: fadeInUp 0.8s cubic-bezier(0.4,0,0.2,1) forwards;
+      }
+      @keyframes fadeInUp {
+        to {
+          opacity: 1;
+          transform: none;
+        }
+      }
+      /* Botón modo oscuro */
+      .darkmode-toggle {
+        position: fixed;
+        top: 22px;
+        right: 22px;
+        z-index: 1000;
+        background: var(--lighter);
+        color: var(--primary-dark);
+        border: 2px solid var(--primary-light);
+        border-radius: 50%;
+        width: 48px;
+        height: 48px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+        box-shadow: var(--shadow-md);
+        cursor: pointer;
+        transition: var(--transition);
+      }
+      .darkmode-toggle:hover {
+        background: var(--primary-light);
+        color: var(--primary);
+      }
+      body.darkmode .darkmode-toggle {
+        background: #232c3a;
+        color: var(--darkmode-primary);
+        border-color: var(--darkmode-primary);
+      }
+      body.darkmode .darkmode-toggle:hover {
+        background: #1e293b;
+        color: #fff;
+      }
+      /* Tooltips */
+      .help-tooltip {
+        display: inline-block;
+        margin-left: 0.4em;
+        color: var(--accent-dark);
+        cursor: pointer;
+        font-size: 1.1em;
+        vertical-align: middle;
+      }
+      .help-tooltip:hover {
+        color: var(--primary-dark);
+      }
       /* Responsividad */
       @media (max-width: 900px) {
         .container {
@@ -518,6 +678,102 @@
           padding: 0.8rem 1.2rem;
         }
       }
+
+      /* --- BLOQUE DE CONTACTO PROFESIONAL --- */
+      .user-contact {
+        max-width: 420px;
+        margin: 0 auto 2.2rem auto;
+        text-align: left;
+        background: rgba(255,255,255,0.72);
+        box-shadow: 0 8px 32px rgba(37,99,235,0.13), 0 1.5px 0 0 var(--primary-light);
+        border-radius: 22px;
+        padding: 2.1rem 1.5rem 1.5rem 1.5rem;
+        border: 2.5px solid var(--primary-light);
+        position: relative;
+        transition: box-shadow 0.22s, border 0.22s, background 0.22s;
+        overflow: visible;
+      }
+      .user-contact .input-group {
+        position: relative;
+        margin-bottom: 1.3rem;
+        display: flex;
+        align-items: center;
+        min-height: 52px;
+      }
+      .user-contact .input-icon {
+        position: absolute;
+        left: 1em;
+        top: 50%;
+        transform: translateY(-50%);
+        color: var(--primary);
+        font-size: 1.18em;
+        pointer-events: none;
+        opacity: 0.82;
+        transition: color 0.18s;
+        height: 1.2em;
+        width: 1.2em;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .user-contact input {
+        width: 100%;
+        padding: 0.7em 1em 0.7em 2.7em;
+        border-radius: 12px;
+        border: 1.7px solid var(--primary-light);
+        font-size: 1.08em;
+        font-family: 'Open Sans', Arial, sans-serif;
+        transition: border 0.18s, box-shadow 0.18s, background 0.18s;
+        box-shadow: 0 1.5px 6px rgba(37, 99, 235, 0.08);
+        outline: none;
+        background: rgba(255,255,255,0.92);
+        color: var(--dark);
+        height: 44px;
+        box-sizing: border-box;
+        margin: 0;
+      }
+      .user-contact .input-group label {
+        position: absolute;
+        left: 2.7em;
+        top: 0.2em;
+        font-size: 1.05em;
+        font-weight: 700;
+        color: var(--primary-dark);
+        background: transparent;
+        z-index: 2;
+        pointer-events: none;
+        margin-bottom: 0;
+        letter-spacing: 0.1px;
+      }
+      .user-contact .input-group input:focus + label,
+      .user-contact .input-group input:not(:placeholder-shown) + label {
+        color: var(--primary);
+      }
+      .user-contact .input-group:not(:last-child)::after {
+        content: '';
+        display: block;
+        height: 1.5px;
+        width: 90%;
+        margin: 0.5rem auto 0.2rem auto;
+        background: linear-gradient(90deg, var(--primary-light), var(--primary), var(--primary-light));
+        border-radius: 2px;
+        opacity: 0.18;
+        position: absolute;
+        left: 5%;
+        bottom: -0.7em;
+      }
+      @media (max-width: 600px) {
+        .user-contact {
+          padding: 1.1rem 0.7rem 1rem 0.7rem;
+        }
+        .user-contact .input-group label {
+          font-size: 0.98em;
+        }
+        .user-contact input {
+          height: 38px;
+        }
+      }
+      /* --- FIN BLOQUE DE CONTACTO PROFESIONAL --- */
     </style>
   </head>
   <body>
@@ -534,7 +790,7 @@
       </div>
 
       <section class="fade-in">
-        <h2>Opciones de Equipos Starlink</h2>
+        <h2>Opciones de Equipos Starlink <span class="help-tooltip" data-help="Elige el equipo según tu necesidad: Mini es portátil, Estándar es fijo y más potente."><i class="fas fa-circle-question"></i></span></h2>
         <div class="options-grid">
           <div class="option" id="option-mini">
             <span class="badge badge-accent">Más popular</span>
@@ -687,7 +943,7 @@
       </section>
 
       <section class="fade-in">
-        <h2>Accesorios Complementarios</h2>
+        <h2>Accesorios Complementarios <span class="help-tooltip" data-help="Selecciona los accesorios que desees sumar a tu instalación. Puedes ver detalles y enlaces de compra."><i class="fas fa-circle-question"></i></span></h2>
         <div class="accessories-grid">
           <div class="accessory">
             <h4><i class="fas fa-tv"></i> TV Stick Google TV</h4>
@@ -771,8 +1027,29 @@
         </div>
       </section>
 
+      <section class="user-contact" aria-label="Datos de contacto">
+        <h2 style="font-family: 'Montserrat',sans-serif; font-weight:900; font-size:1.25rem; margin-bottom:1.1rem; color:var(--primary-dark); letter-spacing:0.5px; text-align:center;">Contacto</h2>
+        <form id="contactForm" autocomplete="on" tabindex="0" aria-label="Formulario de contacto">
+          <div class="input-group">
+            <span class="input-icon" aria-hidden="true">
+              <svg width="1.2em" height="1.2em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:block;"><circle cx="12" cy="7" r="4"/><path d="M5.5 21a7.5 7.5 0 0 1 13 0"/></svg>
+            </span>
+            <input type="text" id="userName" name="userName" placeholder=" " required aria-required="true" aria-label="Nombre completo" tabindex="0" />
+            <label for="userName">Nombre completo <span style="color:var(--primary);">*</span></label>
+          </div>
+          <div class="input-group">
+            <span class="input-icon" aria-hidden="true">
+              <svg width="1.2em" height="1.2em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:block;"><path d="M22 16.92V19a2 2 0 0 1-2.18 2A19.72 19.72 0 0 1 3 5.18 2 2 0 0 1 5 3h2.09a2 2 0 0 1 2 1.72c.13 1.05.37 2.07.72 3.06a2 2 0 0 1-.45 2.11l-.27.27a16 16 0 0 0 6.29 6.29l.27-.27a2 2 0 0 1 2.11-.45c.99.35 2.01.59 3.06.72A2 2 0 0 1 22 16.92z"/></svg>
+            </span>
+            <input type="tel" id="userPhone" name="userPhone" placeholder=" " required aria-required="true" aria-label="Teléfono" pattern="[0-9 +()-]{8,}" tabindex="0" />
+            <label for="userPhone">Teléfono <span style="color:var(--primary);">*</span></label>
+          </div>
+        </form>
+      </section>
+
       <section class="summary fade-in">
-        <h2>Resumen de Presupuesto</h2>
+        <h2>Resumen de Presupuesto <span class="help-tooltip" data-help="Aquí verás el detalle de tu selección y el total estimado. Puedes descargarlo en PDF o enviarlo por WhatsApp."><i class="fas fa-circle-question"></i></span></h2>
+        <div id="visual-summary" style="text-align:center;margin-bottom:1.2em;"></div>
         <div class="plan-info">
           <strong
             ><i class="fas fa-file-invoice-dollar"></i> Plan mensual
@@ -793,7 +1070,10 @@
         </div>
       </section>
 
-      <div style="text-align: center">
+      <div style="text-align: center; margin-bottom: 1.5rem">
+        <button class="btn btn-primary" id="download-pdf-btn" style="margin-bottom: 0.7rem;">
+          <i class="fas fa-file-pdf"></i> Descargar presupuesto en PDF
+        </button>
         <a href="#" class="btn whatsapp-btn" id="whatsapp-btn" target="_blank">
           <i class="fab fa-whatsapp"></i> Solicitar instalación por WhatsApp
         </a>
@@ -810,6 +1090,10 @@
     >
       <div class="footer-copyright">© 2025 Todos los derechos reservados</div>
     </footer>
+
+    <button class="darkmode-toggle" id="darkmode-toggle" aria-label="Alternar modo oscuro" title="Modo oscuro/claro">
+      <i class="fas fa-moon"></i>
+    </button>
 
     <script>
       // Función para formatear números con separadores de miles y hasta tres decimales
@@ -973,135 +1257,302 @@
             if (this.checked) {
               const optionDiv = this.closest('.option');
               if (optionDiv) {
+                // Selecciona el primer plan compatible
                 const firstPlan = optionDiv.querySelector('input[name="plan-option"]');
                 if (firstPlan) {
                   firstPlan.checked = true;
                   // Disparar eventos de cambio para actualizar el resumen y estilos
                   firstPlan.dispatchEvent(new Event('change', { bubbles: true }));
+                  updatePlanSelectionStyles();
+                  updateSelectedPlanText();
                 }
               }
             }
           });
         });
       }
+      // Llamar a la función después de definirla
+      autoSelectPlanForStarlink();
 
-      // Función para generar el mensaje de WhatsApp
+      // --- VALIDACIÓN DE NOMBRE ANTES DE ENVIAR ---
+      function getUserName() {
+        return document.getElementById('userName').value.trim();
+      }
+      function getUserPhone() {
+        return document.getElementById('userPhone').value.trim();
+      }
+      // Modifico la función de WhatsApp para incluir nombre y teléfono y validar antes de abrir WhatsApp
       function generateWhatsAppMessage() {
-        let message =
-          "¡Hola! Me gustaría solicitar una instalación con los siguientes detalles:\n\n";
+        let message = "¡Hola! Me gustaría solicitar una instalación con los siguientes detalles:\n\n";
+        const userName = getUserName();
+        const userPhone = getUserPhone();
+        if (userName) message += `Nombre: ${userName}\n`;
+        if (userPhone) message += `Teléfono: ${userPhone}\n`;
+        message += "\n--- RESUMEN DE PRESUPUESTO ---\n";
 
-        // Agregar equipo seleccionado
-        const starlinkOption = document.querySelector(
-          'input[name="starlink-option"]:checked'
-        );
+        // Equipo seleccionado
+        const starlinkOption = document.querySelector('input[name="starlink-option"]:checked');
         if (starlinkOption) {
-          const starlinkName = starlinkOption
-            .closest(".option")
-            .querySelector("h3")
-            .textContent.trim();
+          const starlinkName = starlinkOption.closest(".option").querySelector("h3").textContent.trim();
           const starlinkPrice = parseFloat(starlinkOption.value);
-          message += `Equipo seleccionado: ${starlinkName} - $${formatNumber(
-            starlinkPrice
-          )}\n`;
+          message += `Equipo: ${starlinkName} - $${formatNumber(starlinkPrice)}\n`;
         }
 
-        // Agregar plan seleccionado
-        const planOption = document.querySelector(
-          'input[name="plan-option"]:checked'
-        );
+        // Plan seleccionado
+        const planOption = document.querySelector('input[name="plan-option"]:checked');
         if (planOption) {
           const planLabel = planOption.nextElementSibling.textContent.trim();
-          message += `Plan seleccionado: ${planLabel}\n`;
+          const planPrice = parseFloat(planOption.value);
+          message += `Plan: ${planLabel} ($${formatNumber(planPrice)}/mes)\n`;
         }
 
-        // Agregar accesorios seleccionados
-        const accessoryOptions = document.querySelectorAll(
-          'input[name="accessory"]:checked'
-        );
+        // Accesorios seleccionados
+        const accessoryOptions = document.querySelectorAll('input[name="accessory"]:checked');
         if (accessoryOptions.length > 0) {
-          message += "\nAccesorios seleccionados:\n";
+          message += "Accesorios:\n";
           accessoryOptions.forEach((option) => {
-            const accessoryName = option
-              .closest(".accessory")
-              .querySelector("h4")
-              .textContent.trim();
-
-            // Si es TV Stick Google TV, agregar cantidad y costos
+            const accessoryName = option.closest(".accessory").querySelector("h4").textContent.trim();
             if (option.id === "tv-stick") {
-              const quantity =
-                parseInt(document.getElementById("tv-stick-quantity").value) ||
-                0;
+              const quantity = parseInt(document.getElementById("tv-stick-quantity").value) || 0;
               if (quantity > 0) {
                 const tvStickCost = 49690 * quantity;
                 const installationCost = 35000 * quantity;
-                message += `- ${accessoryName} (x${quantity}): $${formatNumber(
-                  tvStickCost
-                )}\n`;
-                message += `  Instalación TV Stick (x${quantity}): $${formatNumber(
-                  installationCost
-                )}\n`;
+                message += `- ${accessoryName} (x${quantity}): $${formatNumber(tvStickCost)}\n`;
+                message += `  Instalación TV Stick (x${quantity}): $${formatNumber(installationCost)}\n`;
               }
             } else {
               const accessoryPrice = parseFloat(option.value);
-              message += `- ${accessoryName}: $${formatNumber(
-                accessoryPrice
-              )}\n`;
+              message += `- ${accessoryName}: $${formatNumber(accessoryPrice)}\n`;
             }
           });
         }
 
-        // Agregar costo fijo de instalación de antena
-        message += `\nCosto fijo: Instalación antena con router/extensor - $150.000\n`;
+        // Instalación antena
+        message += `Instalación antena con router/extensor: $150.000\n`;
 
-        // Agregar total aproximado
-        const totalPriceElem =
-          document.getElementById("total-price").textContent;
+        // Total
+        const totalPriceElem = document.getElementById("total-price").textContent;
         message += `\nTotal aproximado: $${totalPriceElem}\n`;
 
         return message;
       }
 
-      // Función para redirigir a WhatsApp
-      function redirectToWhatsApp() {
-        const phoneNumber = "2983523639"; // Número de WhatsApp
-        const message = encodeURIComponent(generateWhatsAppMessage());
-        const whatsappURL = `https://wa.me/${phoneNumber}?text=${message}`;
-        window.open(whatsappURL, "_blank");
-      }
+      // Validar nombre antes de enviar WhatsApp y redirigir a WhatsApp with el mensaje generado en una nueva pestaña
+      document.getElementById("whatsapp-btn").addEventListener("click", function(e) {
+        if (!getUserName()) {
+          e.preventDefault();
+          Swal.fire({
+            icon: 'warning',
+            title: 'Por favor ingresa tu nombre',
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 2500,
+            background: document.body.classList.contains('darkmode') ? '#232c3a' : '#fff',
+            color: document.body.classList.contains('darkmode') ? '#f1f5f9' : '#1e293b',
+          });
+          document.getElementById('userName').focus();
+          return;
+        }
+        // Redirigir a WhatsApp con el mensaje generado en una nueva pestaña
+        e.preventDefault();
+        const numero = '5492983523639'; // Número con código país y sin espacios
+        const mensaje = encodeURIComponent(generateWhatsAppMessage());
+        const url = `https://wa.me/${numero}?text=${mensaje}`;
+        window.open(url, '_blank', 'noopener');
+      }, false);
 
-      // Escuchar clic en el botón de WhatsApp
-      document.getElementById("whatsapp-btn").addEventListener("click", (e) => {
-        e.preventDefault(); // Evitar comportamiento predeterminado del enlace
-        redirectToWhatsApp();
+      // Modifico PDF para incluir nombre y teléfono
+      document.getElementById('download-pdf-btn').addEventListener('click', () => {
+        const { jsPDF } = window.jspdf;
+        const doc = new jsPDF();
+        let y = 15;
+        doc.setFont('helvetica', 'bold');
+        doc.setFontSize(18);
+        doc.text('Presupuesto Starlink y Accesorios', 15, y);
+        y += 10;
+        doc.setFontSize(12);
+        doc.setFont('helvetica', 'normal');
+        doc.text('Fecha: ' + new Date().toLocaleDateString(), 15, y);
+        y += 10;
+        // Equipo
+        const starlinkOption = document.querySelector('input[name="starlink-option"]:checked');
+        if (starlinkOption) {
+          const starlinkName = starlinkOption.closest('.option').querySelector('h3').textContent.trim();
+          const starlinkPrice = parseFloat(starlinkOption.value);
+          doc.text(`Equipo: ${starlinkName} - $${formatNumber(starlinkPrice)}`, 15, y);
+          y += 8;
+        }
+        // Plan
+        const planOption = document.querySelector('input[name="plan-option"]:checked');
+        if (planOption) {
+          const planLabel = planOption.nextElementSibling.textContent.trim();
+          doc.text(`Plan: ${planLabel}`, 15, y);
+          y += 8;
+        }
+        // Accesorios
+        const accessoryOptions = document.querySelectorAll('input[name="accessory"]:checked');
+        if (accessoryOptions.length > 0) {
+          doc.text('Accesorios:', 15, y);
+          y += 8;
+          accessoryOptions.forEach((option) => {
+            const accessoryName = option.closest('.accessory').querySelector('h4').textContent.trim();
+            if (option.id === 'tv-stick') {
+              const quantity = parseInt(document.getElementById('tv-stick-quantity').value) || 0;
+              if (quantity > 0) {
+                const tvStickCost = 49690 * quantity;
+                const installationCost = 35000 * quantity;
+                doc.text(`- ${accessoryName} (x${quantity}): $${formatNumber(tvStickCost)}`, 18, y);
+                y += 7;
+                doc.text(`  Instalación TV Stick (x${quantity}): $${formatNumber(installationCost)}`, 18, y);
+                y += 7;
+              }
+            } else {
+              const accessoryPrice = parseFloat(option.value);
+              doc.text(`- ${accessoryName}: $${formatNumber(accessoryPrice)}`, 18, y);
+              y += 7;
+            }
+          });
+        }
+        // Instalación
+        doc.text('Instalación antena con router/extensor: $150.000', 15, y);
+        y += 10;
+        // Total
+        const totalPriceElem = document.getElementById('total-price').textContent;
+        doc.setFont('helvetica', 'bold');
+        doc.setFontSize(15);
+        doc.text(`Total aproximado: $${totalPriceElem}`, 15, y);
+        y += 10;
+
+        // Datos de usuario
+        const userName = getUserName();
+        const userPhone = getUserPhone();
+        if (userName) { doc.text('Nombre: ' + userName, 15, y); y += 8; }
+        if (userPhone) { doc.text('Teléfono: ' + userPhone, 15, y); y += 8; }
+
+        doc.save('Presupuesto_Starlink.pdf');
+      }, true);
+
+      // --- VALIDACIÓN DE CANTIDAD TV STICK ---
+      document.getElementById('tv-stick-quantity').addEventListener('input', function() {
+        if (this.value < 1) {
+          this.value = 1;
+          Swal.fire({
+            icon: 'warning',
+            title: 'La cantidad mínima es 1',
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 2000,
+            background: document.body.classList.contains('darkmode') ? '#232c3a' : '#fff',
+            color: document.body.classList.contains('darkmode') ? '#f1f5f9' : '#1e293b',
+          });
+        }
       });
 
-      // Escuchar cambios en los radios de los planes
-      document
-        .querySelectorAll('input[name="plan-option"]')
-        .forEach((input) => {
-          input.addEventListener("change", () => {
-            updateSelectedPlanText();
-            updatePlanSelectionStyles();
+      // --- ACCESIBILIDAD: ARIA Y NAVEGACIÓN ---
+      document.querySelectorAll('input, button, a').forEach(el => {
+        if (!el.hasAttribute('tabindex')) el.setAttribute('tabindex', '0');
+      });
+      document.querySelectorAll('input[type="radio"]').forEach(el => {
+        el.setAttribute('aria-checked', el.checked);
+        el.addEventListener('change', function() {
+          el.setAttribute('aria-checked', el.checked);
+        });
+      });
+      document.querySelectorAll('input[type="checkbox"]').forEach(el => {
+        el.setAttribute('aria-checked', el.checked);
+        el.addEventListener('change', function() {
+          el.setAttribute('aria-checked', el.checked);
+        });
+      });
+
+      // --- RESUMEN VISUAL DE SELECCIÓN ---
+      function updateVisualSummary() {
+        const visual = document.getElementById('visual-summary');
+        if (!visual) return;
+        let html = '';
+        // Equipo
+        const starlinkOption = document.querySelector('input[name="starlink-option"]:checked');
+        if (starlinkOption) {
+          const icon = starlinkOption.id === 'mini-option' ? 'fa-satellite-dish' : 'fa-satellite';
+          const name = starlinkOption.closest('.option').querySelector('h3').textContent.trim();
+          html += `<div style='display:inline-block;margin-right:1.5em;'><i class='fas ${icon}' style='font-size:2.2em;color:#2563eb;'></i><div style='font-size:0.95em;'>${name}</div></div>`;
+        }
+        // Accesorios
+        const accessoryOptions = document.querySelectorAll('input[name="accessory"]:checked');
+        accessoryOptions.forEach(option => {
+          let icon = 'fa-box';
+          if (option.id === 'tv-stick') icon = 'fa-tv';
+          if (option.id === 'router') icon = 'fa-wifi';
+          if (option.id === 'extensor') icon = 'fa-signal';
+          const name = option.closest('.accessory').querySelector('h4').textContent.trim();
+          html += `<div style='display:inline-block;margin-right:1.5em;'><i class='fas ${icon}' style='font-size:2.2em;color:#10b981;'></i><div style='font-size:0.95em;'>${name}</div></div>`;
+        });
+        visual.innerHTML = html;
+      }
+      // Crear el contenedor visual solo si no existe
+      if (!document.getElementById('visual-summary')) {
+        let visualSummary = document.createElement('div');
+        visualSummary.id = 'visual-summary';
+        visualSummary.style = 'text-align:center;margin-bottom:1.2em;';
+        document.querySelector('.summary').insertAdjacentElement('afterbegin', visualSummary);
+      }
+      // Actualizar al cambiar selección
+      document.querySelectorAll('input[type="radio"],input[type="checkbox"]').forEach(input => {
+        input.addEventListener('change', updateVisualSummary);
+      });
+      updateVisualSummary();
+
+      // --- TOOLTIP DE AYUDA ---
+      document.querySelectorAll('.help-tooltip').forEach(el => {
+        el.addEventListener('mouseenter', () => {
+          Swal.fire({
+            text: el.getAttribute('data-help'),
+            icon: 'info',
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 8000,
+            timerProgressBar: true,
+            background: document.body.classList.contains('darkmode') ? '#232c3a' : '#fff',
+            color: document.body.classList.contains('darkmode') ? '#f1f5f9' : '#1e293b',
           });
         });
+      });
 
-      // Escuchar cambios en los inputs
-      document
-        .querySelectorAll(
-          'input[type="radio"], input[type="checkbox"], input[type="number"]'
-        )
-        .forEach((input) => {
-          input.addEventListener("change", () => {
-            calculateTotal();
-            updateSelectedPlanText();
-          });
+      // --- Inicializar correctamente el cálculo del presupuesto ---
+      document.querySelectorAll(
+        'input[type="radio"], input[type="checkbox"], input[type="number"]'
+      ).forEach((input) => {
+        input.addEventListener("change", () => {
+          calculateTotal();
+          updateSelectedPlanText();
         });
-
-      // Inicializar
+      });
       calculateTotal();
       updateSelectedPlanText();
       updatePlanSelectionStyles();
       autoSelectPlanForStarlink();
+
+      // --- MODO OSCURO ---
+      const darkToggle = document.getElementById('darkmode-toggle');
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      if (localStorage.getItem('darkmode') === 'true' || (!localStorage.getItem('darkmode') && prefersDark)) {
+        document.body.classList.add('darkmode');
+        darkToggle.innerHTML = '<i class="fas fa-sun"></i>';
+      }
+      darkToggle.addEventListener('click', () => {
+        document.body.classList.toggle('darkmode');
+        const isDark = document.body.classList.contains('darkmode');
+        darkToggle.innerHTML = isDark ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+        localStorage.setItem('darkmode', isDark);
+      });
+
+      // --- ANIMACIONES DE ENTRADA ---
+      document.querySelectorAll('.fade-in').forEach((el, i) => {
+        el.style.animationDelay = (i * 0.12) + 's';
+      });
     </script>
   </body>
 </html>
