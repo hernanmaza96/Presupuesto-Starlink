@@ -1,1116 +1,1106 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Presupuesto Starlink y Accesorios</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
     <style>
-        :root {
-            --primary: #2563eb;
-            --primary-dark: #1d4ed8;
-            --primary-light: #93c5fd;
-            --secondary: #10b981;
-            --secondary-dark: #059669;
-            --accent: #f59e0b;
-            --accent-dark: #d97706;
-            --dark: #1e293b;
-            --darker: #0f172a;
-            --light: #f8fafc;
-            --lighter: #ffffff;
-            --gray: #64748b;
-            --light-gray: #e2e8f0;
-            --danger: #ef4444;
-            --success: #10b981;
-            --info: #3b82f6;
-            --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
-            --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
-            --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
-            --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.1);
-            --border-radius: 12px;
-            --border-radius-sm: 8px;
-            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
+      @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Open+Sans:wght@400;600&display=swap');
+      :root {
+        --primary: #2563eb;
+        --primary-dark: #1d4ed8;
+        --primary-light: #e3eafe;
+        --secondary: #10b981;
+        --secondary-dark: #059669;
+        --accent: #f59e0b;
+        --accent-dark: #d97706;
+        --dark: #1e293b;
+        --darker: #0f172a;
+        --light: #f8fafc;
+        --lighter: #ffffff;
+        --gray: #64748b;
+        --light-gray: #e2e8f0;
+        --danger: #ef4444;
+        --success: #10b981;
+        --info: #3b82f6;
+        --shadow-sm: 0 2px 8px rgba(37, 99, 235, 0.07);
+        --shadow-md: 0 6px 24px rgba(37, 99, 235, 0.09);
+        --shadow-lg: 0 12px 32px rgba(37, 99, 235, 0.13);
+        --glass: rgba(255,255,255,0.65);
+        --border-radius: 22px;
+        --border-radius-sm: 14px;
+        --transition: all 0.22s cubic-bezier(0.4, 0, 0.2, 1);
+      }
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        body {
-            font-family: 'Open Sans', sans-serif;
-            line-height: 1.6;
-            color: var(--dark);
-            background-color: var(--light);
-            -webkit-font-smoothing: antialiased;
-        }
-
+      body {
+        font-family: 'Open Sans', Arial, sans-serif;
+        background: linear-gradient(120deg, #f8fafc 0%, #e3eafe 100%);
+        color: var(--dark);
+        min-height: 100vh;
+        letter-spacing: 0.01em;
+      }
+      .container {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 0 24px;
+      }
+      header {
+        background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+        color: var(--lighter);
+        padding: 2.7rem 0 2.2rem 0;
+        box-shadow: var(--shadow-md);
+        border-radius: 0 0 40px 40px;
+        margin-bottom: 2.7rem;
+        position: relative;
+        overflow: hidden;
+      }
+      header h1 {
+        font-family: 'Montserrat', Arial, sans-serif;
+        font-size: 2.9rem;
+        font-weight: 800;
+        letter-spacing: 1.5px;
+        text-shadow: 0 2px 12px rgba(0,0,0,0.10);
+        margin-bottom: 0.5rem;
+      }
+      h2 {
+        font-family: 'Montserrat', Arial, sans-serif;
+        font-size: 2.1rem;
+        color: var(--primary);
+        border-bottom: 2.5px solid var(--primary-light);
+        padding-bottom: 0.6rem;
+        margin: 2.7rem 0 1.7rem;
+        font-weight: 800;
+        letter-spacing: 0.5px;
+      }
+      h3 {
+        font-family: 'Montserrat', Arial, sans-serif;
+        font-size: 1.35rem;
+        color: var(--primary-dark);
+        font-weight: 700;
+        margin-bottom: 0.5rem;
+      }
+      h4 {
+        font-family: 'Montserrat', Arial, sans-serif;
+        font-size: 1.08rem;
+        color: var(--primary);
+        font-weight: 600;
+        margin-bottom: 0.2rem;
+      }
+      p {
+        color: var(--gray);
+        font-family: 'Open Sans', Arial, sans-serif;
+        font-size: 1.01rem;
+      }
+      .location {
+        display: inline-flex;
+        align-items: center;
+        background: var(--primary-light);
+        padding: 0.6rem 1.3rem;
+        border-radius: 50px;
+        font-size: 1.05rem;
+        color: var(--primary-dark);
+        margin-bottom: 1.7rem;
+        box-shadow: var(--shadow-sm);
+        border: 1.5px solid var(--primary);
+        font-weight: 600;
+        letter-spacing: 0.2px;
+      }
+      .location i {
+        margin-right: 0.6rem;
+      }
+      .options-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2.2rem;
+        margin-bottom: 2.7rem;
+      }
+      .option {
+        background: var(--glass);
+        backdrop-filter: blur(7px);
+        border-radius: var(--border-radius);
+        padding: 2.2rem 1.7rem 1.7rem 1.7rem;
+        box-shadow: var(--shadow-md);
+        border: 2px solid var(--primary-light);
+        transition: var(--transition);
+        position: relative;
+        overflow: hidden;
+      }
+      .option.selected {
+        border: 2.7px solid var(--primary);
+        box-shadow: var(--shadow-lg);
+        background: rgba(224,240,255,0.85);
+      }
+      .option:hover {
+        transform: translateY(-7px) scale(1.012);
+        box-shadow: var(--shadow-lg);
+        border-color: var(--primary);
+      }
+      .option .badge {
+        position: absolute;
+        top: 1.2rem;
+        right: 1.2rem;
+      }
+      .price {
+        font-family: 'Montserrat', Arial, sans-serif;
+        font-weight: 700;
+        color: var(--primary-dark);
+        font-size: 1.45rem;
+        margin: 0.8rem 0 0.5rem 0;
+        display: flex;
+        align-items: center;
+        letter-spacing: 0.2px;
+      }
+      .price i {
+        margin-right: 0.5rem;
+        color: var(--gray);
+        font-size: 1.2rem;
+      }
+      .specs {
+        margin: 1.25rem 0 1rem 0;
+        color: var(--gray);
+        font-size: 1.01rem;
+      }
+      .radio-option {
+        margin: 1.25rem 0 0.5rem 0;
+      }
+      .plan-options {
+        margin: 1.25rem 0 0.5rem 0;
+      }
+      .plan-option {
+        background: #f4f8ff;
+        padding: 1.15rem 1.2rem;
+        border-radius: var(--border-radius-sm);
+        margin-bottom: 0.7rem;
+        border: 2px solid var(--primary-light);
+        box-shadow: 0 2px 8px rgba(37, 99, 235, 0.04);
+        transition: var(--transition);
+        cursor: pointer;
+      }
+      .plan-option.selected-plan {
+        background: #e3eafe;
+        border: 2.5px solid var(--primary);
+        box-shadow: 0 4px 16px rgba(37, 99, 235, 0.09);
+      }
+      .plan-option:hover {
+        background: #f0f7ff;
+        border-color: var(--primary);
+      }
+      .btn-container {
+        display: flex;
+        gap: 1rem;
+        margin-top: 1.5rem;
+        flex-wrap: wrap;
+      }
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 1rem 1.8rem;
+        border-radius: var(--border-radius-sm);
+        font-family: 'Montserrat', Arial, sans-serif;
+        font-weight: 700;
+        text-decoration: none;
+        transition: var(--transition);
+        border: none;
+        cursor: pointer;
+        font-size: 1.05rem;
+        white-space: nowrap;
+        letter-spacing: 0.5px;
+        box-shadow: 0 2px 8px rgba(37, 99, 235, 0.07);
+      }
+      .btn i {
+        margin-right: 0.5rem;
+      }
+      .btn-primary {
+        background: var(--primary);
+        color: var(--lighter);
+        box-shadow: 0 4px 12px rgba(37, 99, 235, 0.13);
+      }
+      .btn-primary:hover {
+        background: var(--primary-dark);
+        transform: translateY(-2px) scale(1.03);
+      }
+      .btn-outline {
+        background: transparent;
+        border: 2px solid var(--primary);
+        color: var(--primary);
+      }
+      .btn-outline:hover {
+        background: var(--primary);
+        color: var(--lighter);
+        box-shadow: 0 4px 12px rgba(37, 99, 235, 0.13);
+      }
+      .accessories-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+        gap: 2.2rem;
+        margin: 2.2rem 0 3.2rem;
+      }
+      .accessory {
+        background: var(--glass);
+        backdrop-filter: blur(7px);
+        border-radius: var(--border-radius);
+        padding: 2.1rem 1.5rem 1.5rem 1.5rem;
+        box-shadow: var(--shadow-md);
+        border: 2px solid var(--primary-light);
+        display: flex;
+        flex-direction: column;
+        transition: var(--transition);
+        overflow: hidden;
+      }
+      .accessory.selected {
+        background: #e3f8fa;
+        border: 2.5px solid var(--secondary);
+        box-shadow: 0 4px 16px rgba(16, 185, 129, 0.09);
+      }
+      .accessory:hover {
+        transform: translateY(-7px) scale(1.012);
+        box-shadow: var(--shadow-lg);
+        border-color: var(--secondary);
+      }
+      .accessory h4 {
+        margin-bottom: 0.75rem;
+        display: flex;
+        align-items: center;
+      }
+      .accessory h4 i {
+        margin-right: 0.75rem;
+        color: var(--primary);
+        font-size: 1.2rem;
+      }
+      .accessory .price {
+        margin: 1rem 0 0.5rem 0;
+      }
+      .accessory .radio-option {
+        margin-top: auto;
+        padding-top: 1rem;
+        border-top: 1px solid var(--light-gray);
+      }
+      .summary {
+        background: rgba(244,248,255,0.95);
+        border-radius: 22px;
+        padding: 2.7rem 2.2rem;
+        box-shadow: var(--shadow-md);
+        margin: 3.2rem 0;
+        border: 2px solid var(--primary-light);
+        position: relative;
+        overflow: hidden;
+      }
+      .summary:before {
+        content: '';
+        position: absolute;
+        top: 0; left: 0; right: 0; height: 7px;
+        background: linear-gradient(90deg, var(--primary), var(--secondary));
+        border-radius: 22px 22px 0 0;
+        opacity: 0.18;
+      }
+      .plan-info {
+        background: #e3eafe;
+        padding: 1.35rem 1.5rem;
+        border-radius: var(--border-radius-sm);
+        margin-bottom: 2rem;
+        border-left: 6px solid var(--primary);
+        display: flex;
+        flex-direction: column;
+        box-shadow: 0 2px 8px rgba(37, 99, 235, 0.04);
+      }
+      .plan-info strong {
+        color: var(--primary);
+        margin-bottom: 0.5rem;
+        font-family: 'Montserrat', Arial, sans-serif;
+        font-size: 1.08rem;
+      }
+      .plan-info p {
+        font-size: 0.97rem;
+        color: var(--gray);
+        margin-bottom: 0;
+      }
+      .cost-list {
+        list-style: none;
+        margin-bottom: 0.5rem;
+      }
+      .cost-list li {
+        padding: 1.1rem 0;
+        border-bottom: 1px solid var(--light-gray);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 1.07rem;
+      }
+      .cost-list li:last-child {
+        border-bottom: none;
+      }
+      .cost-list li span:first-child {
+        color: var(--dark);
+        font-weight: 500;
+        font-family: 'Montserrat', Arial, sans-serif;
+      }
+      .cost-list li span:last-child {
+        font-weight: 700;
+        color: var(--primary-dark);
+        font-family: 'Montserrat', Arial, sans-serif;
+      }
+      .total {
+        font-size: 1.8rem;
+        font-weight: 800;
+        color: #1e293b;
+        margin-top: 2.2rem;
+        padding-top: 2.2rem;
+        border-top: 2.5px solid var(--primary-light);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        letter-spacing: 0.5px;
+      }
+      .total span:last-child {
+        color: #2563eb;
+        font-size: 2.2rem;
+        font-family: 'Montserrat', Arial, sans-serif;
+      }
+      .whatsapp-btn {
+        background: linear-gradient(90deg, var(--secondary), var(--primary));
+        color: var(--lighter);
+        font-size: 1.18rem;
+        padding: 1.15rem 2.4rem;
+        margin: 2.7rem auto 0 auto;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.95rem;
+        border-radius: 50px;
+        box-shadow: 0 4px 16px rgba(16, 185, 129, 0.13);
+        transition: var(--transition);
+        border: none;
+        font-family: 'Montserrat', Arial, sans-serif;
+        font-weight: 800;
+        letter-spacing: 0.7px;
+      }
+      .whatsapp-btn:hover {
+        background: linear-gradient(90deg, var(--primary), var(--secondary));
+        transform: translateY(-2px) scale(1.04);
+        box-shadow: 0 7px 22px rgba(16, 185, 129, 0.18);
+        color: #fff;
+      }
+      .badge {
+        display: inline-block;
+        padding: 0.38rem 0.8rem;
+        border-radius: 50px;
+        font-size: 0.82rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.6px;
+        font-family: 'Montserrat', Arial, sans-serif;
+      }
+      .badge-primary {
+        background: var(--primary-light);
+        color: var(--primary-dark);
+      }
+      .badge-secondary {
+        background: #d1fae5;
+        color: var(--secondary-dark);
+      }
+      .badge-accent {
+        background: #fef3c7;
+        color: var(--accent-dark);
+      }
+      footer {
+        background: var(--darker);
+        color: var(--lighter);
+        padding: 3.2rem 0 2.2rem 0;
+        margin-top: 4.2rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        border-radius: 40px 40px 0 0;
+      }
+      .footer-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+      .footer-logo {
+        font-size: 1.5rem;
+        font-weight: 700;
+        margin-bottom: 1.5rem;
+        color: var(--lighter);
+      }
+      .footer-contact {
+        margin-bottom: 1.5rem;
+        display: flex;
+        gap: 1.5rem;
+      }
+      .footer-contact a {
+        color: var(--lighter);
+        text-decoration: none;
+        transition: var(--transition);
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+      .footer-contact a:hover {
+        color: var(--primary-light);
+      }
+      .footer-copyright {
+        font-size: 1.05rem;
+        color: var(--light-gray);
+        font-family: 'Open Sans', Arial, sans-serif;
+      }
+      /* Separadores visuales */
+      section.fade-in:not(:last-child) {
+        border-bottom: 2.5px dashed var(--primary-light);
+        margin-bottom: 2.5rem;
+        padding-bottom: 2.5rem;
+      }
+      /* Microinteracciones para inputs */
+      input[type="radio"], input[type="checkbox"] {
+        accent-color: var(--primary);
+        width: 1.15em;
+        height: 1.15em;
+        margin-right: 0.5em;
+        transition: box-shadow 0.18s;
+      }
+      input[type="radio"]:focus, input[type="checkbox"]:focus {
+        box-shadow: 0 0 0 2px var(--primary-light);
+        outline: none;
+      }
+      input[type="number"] {
+        border: 1.5px solid var(--primary-light);
+        border-radius: 8px;
+        padding: 0.3em 0.7em;
+        font-size: 1.01em;
+        font-family: 'Open Sans', Arial, sans-serif;
+        transition: border 0.18s;
+        margin-left: 0.5em;
+      }
+      input[type="number"]:focus {
+        border: 1.5px solid var(--primary);
+        outline: none;
+      }
+      /* Responsividad */
+      @media (max-width: 900px) {
         .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
+          padding: 0 10px;
         }
-
-        header {
-            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-            color: var(--lighter);
-            padding: 2.5rem 0;
-            box-shadow: var(--shadow-md);
-            margin-bottom: 2.5rem;
-            position: relative;
-            overflow: hidden;
-        }
-
-        header::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            right: -50%;
-            width: 100%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%);
-            z-index: 0;
-        }
-
-        .header-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            position: relative;
-            z-index: 1;
-        }
-
-        h1, h2, h3, h4 {
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 600;
-            margin-bottom: 1rem;
-            line-height: 1.3;
-        }
-
-        h1 {
-            font-size: 2.5rem;
-            font-weight: 700;
-        }
-
-        h2 {
-            font-size: 1.8rem;
-            color: var(--primary);
-            border-bottom: 2px solid var(--light-gray);
-            padding-bottom: 0.75rem;
-            margin: 2.5rem 0 1.5rem;
-            position: relative;
-        }
-
-        h2::after {
-            content: '';
-            position: absolute;
-            bottom: -2px;
-            left: 0;
-            width: 100px;
-            height: 2px;
-            background: var(--primary);
-        }
-
-        h3 {
-            font-size: 1.4rem;
-            color: var(--darker);
-        }
-
-        h4 {
-            font-size: 1.1rem;
-            color: var(--dark);
-            font-weight: 500;
-        }
-
-        p {
-            margin-bottom: 1rem;
-            color: var(--gray);
-        }
-
-        .location {
-            display: inline-flex;
-            align-items: center;
-            background-color: var(--lighter);
-            padding: 0.5rem 1rem;
-            border-radius: 50px;
-            font-size: 0.9rem;
-            color: var(--gray);
-            margin-bottom: 1.5rem;
-            box-shadow: var(--shadow-sm);
-            border: 1px solid var(--light-gray);
-        }
-
-        .location i {
-            margin-right: 0.5rem;
-            color: var(--primary);
-        }
-
         .options-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1.5rem;
-            margin-bottom: 2.5rem;
+          grid-template-columns: 1fr;
         }
-
-        .option {
-            background-color: var(--lighter);
-            border-radius: var(--border-radius);
-            padding: 1.75rem;
-            box-shadow: var(--shadow-md);
-            transition: var(--transition);
-            border: 1px solid var(--light-gray);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .option::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 4px;
-            height: 100%;
-            background: var(--primary);
-            transition: var(--transition);
-        }
-
-        .option:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-lg);
-        }
-
-        .option.selected {
-            border: 2px solid #00bcd4; /* Mantener el borde visible */
-            box-shadow: 0 4px 6px rgba(0, 188, 212, 0.3); /* Mantener el efecto de sombra */
-            transition: all 0.3s ease-in-out;
-            background-color: transparent; /* Quitar el fondo de color */
-        }
-
-        .option.selected::before {
-            background: var(--accent);
-        }
-
-        .price {
-            font-weight: 700;
-            color: var(--primary-dark);
-            font-size: 1.5rem;
-            margin: 0.75rem 0;
-            display: flex;
-            align-items: center;
-        }
-
-        .price i {
-            margin-right: 0.5rem;
-            color: var(--gray);
-            font-size: 1.2rem;
-        }
-
-        .specs {
-            margin: 1.25rem 0;
-            color: var(--gray);
-            font-size: 0.95rem;
-        }
-
-        .specs p {
-            margin-bottom: 0.75rem;
-            display: flex;
-            align-items: flex-start;
-        }
-
-        .specs i {
-            margin-right: 0.5rem;
-            color: var(--primary);
-            font-size: 0.9rem;
-            margin-top: 0.2rem;
-        }
-
-        .radio-option {
-            margin: 1.25rem 0;
-            position: relative;
-        }
-
-        .radio-option input[type="radio"] {
-            position: absolute;
-            opacity: 0;
-        }
-
-        .radio-option label {
-            font-weight: 600;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            position: relative;
-            padding-left: 2rem;
-            color: var(--darker);
-        }
-
-        .radio-option label::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 0;
-            width: 1.25rem;
-            height: 1.25rem;
-            border: 2px solid var(--gray);
-            border-radius: 50%;
-            transition: var(--transition);
-        }
-
-        .radio-option label::after {
-            content: '';
-            position: absolute;
-            left: 0.5rem;
-            top: 0.5rem;
-            width: 0.75rem;
-            height: 0.75rem;
-            background: var(--primary);
-            border-radius: 50%;
-            transform: scale(0);
-            transition: var(--transition);
-        }
-
-        .radio-option input[type="radio"]:checked + label::before {
-            border-color: var(--primary);
-        }
-
-        .radio-option input[type="radio"]:checked + label::after {
-            transform: scale(1);
-        }
-
-        .plan-options {
-            margin: 1.25rem 0;
-        }
-
-        .plan-option {
-            background-color: var(--light); /* Fondo claro */
-            padding: 1.25rem;
-            border-radius: var(--border-radius-sm);
-            margin-bottom: 0.8rem;
-            transition: var(--transition);
-            border: 2px solid var(--light-gray); /* Borde visible */
-            position: relative;
-            cursor: pointer;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra ligera */
-        }
-
-        .plan-option:hover {
-            background-color: #e3f2fd; /* Fondo más claro al pasar el mouse */
-            border-color: var(--primary); /* Borde más visible al pasar el mouse */
-            box-shadow: 0 4px 6px rgba(33, 150, 243, 0.3); /* Sombra más intensa */
-        }
-
-        .plan-option.selected-plan {
-            background-color: #bbdefb; /* Fondo azul para el plan seleccionado */
-            border: 2px solid #2196f3; /* Borde azul más visible */
-            box-shadow: 0 4px 6px rgba(33, 150, 243, 0.5); /* Sombra más intensa */
-            transition: all 0.3s ease-in-out;
-        }
-
-        .plan-option input[type="radio"] {
-            position: absolute;
-            opacity: 0;
-        }
-
-        .plan-option label {
-            font-weight: 600;
-            cursor: pointer;
-            display: block;
-            color: var(--darker);
-            margin-bottom: 0.5rem;
-        }
-
-        .plan-option p {
-            font-size: 0.9rem;
-            color: var(--gray);
-            margin-left: 0;
-            margin-top: 0.5rem;
-            padding-left: 0;
-        }
-
-        .btn-container {
-            display: flex;
-            gap: 1rem;
-            margin-top: 1.5rem;
-            flex-wrap: wrap;
-        }
-
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            padding: 0.8rem 1.5rem;
-            border-radius: var(--border-radius-sm);
-            font-weight: 600;
-            text-decoration: none;
-            transition: var(--transition);
-            border: none;
-            cursor: pointer;
-            font-size: 0.95rem;
-            white-space: nowrap;
-        }
-
-        .btn i {
-            margin-right: 0.5rem;
-        }
-
-        .btn-primary {
-            background-color: var(--primary);
-            color: var(--lighter);
-            box-shadow: 0 4px 6px rgba(37, 99, 235, 0.2);
-        }
-
-        .btn-primary:hover {
-            background-color: var(--primary-dark);
-            transform: translateY(-2px);
-            box-shadow: 0 6px 8px rgba(37, 99, 235, 0.3);
-        }
-
-        .btn-secondary {
-            background-color: var(--secondary);
-            color: var(--lighter);
-            box-shadow: 0 4px 6px rgba(16, 185, 129, 0.2);
-        }
-
-        .btn-secondary:hover {
-            background-color: var(--secondary-dark);
-            transform: translateY(-2px);
-            box-shadow: 0 6px 8px rgba(16, 185, 129, 0.3);
-        }
-
-        .btn-outline {
-            background-color: transparent;
-            border: 2px solid var(--primary);
-            color: var(--primary);
-        }
-
-        .btn-outline:hover {
-            background-color: var(--primary);
-            color: var(--lighter);
-            box-shadow: 0 4px 6px rgba(37, 99, 235, 0.2);
-        }
-
         .accessories-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 1.5rem;
-            margin: 2rem 0 3rem;
+          grid-template-columns: 1fr;
         }
-
-        .accessory {
-            background-color: var(--lighter);
-            border-radius: var(--border-radius);
-            padding: 1.75rem;
-            box-shadow: var(--shadow-md);
-            transition: var(--transition);
-            border: 1px solid var(--light-gray);
-            display: flex;
-            flex-direction: column;
-        }
-
-        .accessory:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-lg);
-        }
-
-        .accessory.selected {
-            background-color: #e0f7fa; /* Color de fondo visible */
-            border: 2px solid #00bcd4; /* Borde más visible */
-            box-shadow: 0 4px 6px rgba(0, 188, 212, 0.3);
-            transition: all 0.3s ease-in-out;
-        }
-
-        .accessory h4 {
-            margin-bottom: 0.75rem;
-            display: flex;
-            align-items: center;
-        }
-
-        .accessory h4 i {
-            margin-right: 0.75rem;
-            color: var(--primary);
-            font-size: 1.2rem;
-        }
-
-        .accessory .price {
-            margin: 1rem 0;
-        }
-
-        .accessory .radio-option {
-            margin-top: auto;
-            padding-top: 1rem;
-            border-top: 1px solid var(--light-gray);
-        }
-
-        .accessory .radio-option input[type="checkbox"] {
-            position: absolute;
-            opacity: 0;
-        }
-
-        .accessory .radio-option label {
-            display: flex;
-            align-items: center;
-            padding-left: 2rem;
-            position: relative;
-        }
-
-        .accessory .radio-option label::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 0;
-            width: 1.25rem;
-            height: 1.25rem;
-            border: 2px solid var(--gray);
-            border-radius: var(--border-radius-sm);
-            transition: var(--transition);
-        }
-
-        .accessory .radio-option label::after {
-            content: '\f00c';
-            font-family: 'Font Awesome 6 Free';
-            font-weight: 900;
-            position: absolute;
-            left: 0.25rem;
-            top: 0.1rem;
-            color: var(--lighter);
-            font-size: 0.8rem;
-            transform: scale(0);
-            transition: var(--transition);
-        }
-
-        .accessory .radio-option input[type="checkbox"]:checked + label::before {
-            background: var(--primary);
-            border-color: var(--primary);
-        }
-
-        .accessory .radio-option input[type="checkbox"]:checked + label::after {
-            transform: scale(1);
-        }
-
         .summary {
-            background-color: #f8fafc;
-            border-radius: 12px;
-            padding: 2.5rem;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            margin: 3rem 0;
-            border: 1px solid #e2e8f0;
+          padding: 1.2rem 0.5rem;
         }
-
-        .plan-info {
-            background-color: var(--light);
-            padding: 1.25rem;
-            border-radius: var(--border-radius-sm);
-            margin-bottom: 1.75rem;
-            border-left: 4px solid var(--primary);
-            display: flex;
-            flex-direction: column;
+      }
+      @media (max-width: 600px) {
+        header h1 {
+          font-size: 1.5rem;
         }
-
-        .plan-info strong {
-            color: var(--primary);
-            margin-bottom: 0.5rem;
+        h2 {
+          font-size: 1.2rem;
         }
-
-        .plan-info p {
-            font-size: 0.9rem;
-            color: var(--gray);
-            margin-bottom: 0;
+        .summary {
+          padding: 1.2rem 0.5rem;
         }
-
-        .cost-list {
-            list-style: none;
-        }
-
-        .cost-list li {
-            padding: 1rem 0;
-            border-bottom: 1px solid var(--light-gray);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .cost-list li:last-child {
-            border-bottom: none;
-        }
-
-        .cost-list li span:first-child {
-            color: var(--dark);
-            font-weight: 500;
-        }
-
-        .cost-list li span:last-child {
-            font-weight: 600;
-            color: var(--primary-dark);
-        }
-
         .total {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: #1e293b;
-            margin-top: 1.75rem;
-            padding-top: 1.75rem;
-            border-top: 2px solid #e2e8f0;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+          font-size: 1.1rem;
         }
-
         .total span:last-child {
-            color: #2563eb;
-            font-size: 1.8rem;
+          font-size: 1.3rem;
         }
-
         .whatsapp-btn {
-            background-color: var(--secondary);
-            color: var(--lighter);
-            font-size: 1.1rem;
-            padding: 1rem 2rem;
-            margin: 2rem auto;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.75rem;
-            border-radius: 50px;
-            box-shadow: 0 4px 6px rgba(16, 185, 129, 0.2);
-            transition: var(--transition);
+          font-size: 1rem;
+          padding: 0.8rem 1.2rem;
         }
-
-        .whatsapp-btn:hover {
-            background-color: var(--secondary-dark);
-            transform: translateY(-2px);
-            box-shadow: 0 6px 8px rgba(16, 185, 129, 0.3);
-        }
-
-        .badge {
-            display: inline-block;
-            padding: 0.35rem 0.75rem;
-            border-radius: 50px;
-            font-size: 0.75rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .badge-primary {
-            background-color: var(--primary-light);
-            color: var(--primary-dark);
-        }
-
-        .badge-secondary {
-            background-color: #d1fae5;
-            color: var(--secondary-dark);
-        }
-
-        .badge-accent {
-            background-color: #fef3c7;
-            color: var(--accent-dark);
-        }
-
-        footer {
-            background-color: var(--darker);
-            color: var(--lighter);
-            padding: 3rem 0;
-            margin-top: 4rem;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-        }
-
-        .footer-content {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-        }
-
-        .footer-logo {
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin-bottom: 1.5rem;
-            color: var(--lighter);
-        }
-
-        .footer-contact {
-            margin-bottom: 1.5rem;
-            display: flex;
-            gap: 1.5rem;
-        }
-
-        .footer-contact a {
-            color: var(--lighter);
-            text-decoration: none;
-            transition: var(--transition);
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .footer-contact a:hover {
-            color: var(--primary-light);
-        }
-
-        .footer-copyright {
-            font-size: 0.9rem;
-            color: var(--light-gray);
-        }
-
-        /* Animaciones */
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .fade-in {
-            animation: fadeIn 0.5s ease-out forwards;
-        }
-
-        /* Mejoras para móviles */
-        @media (max-width: 768px) {
-            .options-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .header-content {
-                flex-direction: column;
-                text-align: center;
-                gap: 1rem;
-            }
-            
-            h1 {
-                font-size: 2rem;
-            }
-            
-            h2 {
-                font-size: 1.6rem;
-            }
-            
-            .btn {
-                width: 100%;
-                justify-content: center;
-            }
-            
-            .btn-container {
-                flex-direction: column;
-                gap: 0.75rem;
-            }
-            
-            .accessories-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .summary {
-                padding: 1.5rem;
-            }
-        }
-
-        /* Efectos hover más suaves */
-        .option, .accessory, .btn {
-            will-change: transform;
-        }
-
-        /* Mejoras en los inputs */
-        input[type="radio"], input[type="checkbox"] {
-            cursor: pointer;
-        }
-
-        .option, .accessory {
-            background-color: #e0f7fa; /* Color de fondo visible */
-            border: 2px solid #00bcd4; /* Borde más visible */
-            box-shadow: 0 4px 6px rgba(0, 188, 212, 0.3); /* Efecto de sombra */
-            transition: all 0.3s ease-in-out;
-            border-radius: var(--border-radius); /* Mantener bordes redondeados */
-        }
-
-        .option:hover, .accessory:hover {
-            transform: translateY(-5px); /* Efecto de elevación al pasar el mouse */
-            box-shadow: 0 6px 8px rgba(0, 188, 212, 0.4); /* Sombra más intensa */
-        }
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <header>
-        <div class="container header-content">
-            <h1>Presupuesto Starlink y Accesorios para TV Digital - Junio 2025</h1>
-        </div>
+      <div class="container header-content">
+        <h1>Presupuesto Starlink y Accesorios para TV Digital - Junio 2025</h1>
+      </div>
     </header>
 
     <main class="container">
-        <div class="location fade-in">
-            <i class="fas fa-map-marker-alt"></i>
-            Balcarce, Buenos Aires
-        </div>
+      <div class="location fade-in">
+        <i class="fas fa-map-marker-alt"></i>
+        Balcarce, Buenos Aires
+      </div>
 
-        <section class="fade-in">
-            <h2>Opciones de Equipos Starlink</h2>
-            <div class="options-grid">
-                <div class="option" id="option-mini">
-                    <span class="badge badge-accent">Más popular</span>
-                    <h3><i class="fas fa-satellite-dish"></i> Starlink Mini (Portátil)</h3>
-                    <div class="price">
-                        <i class="fas fa-tag"></i> $189.000 ARS
-                    </div>
-                    <div class="specs">
-                        <p><i class="fas fa-tachometer-alt"></i> <strong>Velocidad:</strong> 50-100 Mbps</p>
-                        <p><i class="fas fa-clock"></i> <strong>Latencia:</strong> ~23 ms</p>
-                        <p><i class="fas fa-bolt"></i> <strong>Consumo:</strong> 25-40 W</p>
-                    </div>
-                    
-                    <div class="radio-option">
-                        <input type="radio" name="starlink-option" id="mini-option" value="189000" checked>
-                        <label for="mini-option">Seleccionar esta opción</label>
-                    </div>
-                    
-                    <h4><i class="fas fa-list-alt"></i> Planes compatibles:</h4>
-                    <div class="plan-options">
-                        <div class="plan-option">
-                            <input type="radio" name="plan-option" id="plan-lite" value="38000" checked>
-                            <label for="plan-lite">Residencial Lite: $38.000/mes</label>
-                            <p>Velocidades de 45-130 Mbps descarga / 10-20 Mbps carga</p>
-                        </div>
-                        <div class="plan-option">
-                            <input type="radio" name="plan-option" id="plan-standard" value="56100">
-                            <label for="plan-standard">Residencial Estándar: $56.100/mes</label>
-                            <p>Velocidades de 100-270+ Mbps descarga</p>
-                        </div>
-                    </div>
-                    
-                    <div class="btn-container">
-                        <a href="https://www.mercadolibre.com.ar/starlink-kit-mini-internet-satelital/p/MLA40656539#polycard_client=bookmarks&wid=MLA1450558069&sid=bookmarks" class="btn btn-outline" target="_blank">
-                            <i class="fas fa-external-link-alt"></i> Ver en Mercado Libre
-                        </a>
-                        <a href="https://www.starlink.com/order?processorToken=481b6ebd-1f5d-4e59-b34b-f7cb31706726&step=0" class="btn btn-outline" target="_blank">
-                            <i class="fas fa-external-link-alt"></i> Ver en Starlink
-                        </a>
-                    </div>
-                </div>
-                
-                <div class="option" id="option-standard">
-                    <h3><i class="fas fa-satellite"></i> Starlink Estándar V4</h3>
-                    <div class="price">
-                        <i class="fas fa-tag"></i> $499.999 ARS
-                    </div>
-                    <div class="specs">
-                        <p><i class="fas fa-tachometer-alt"></i> <strong>Velocidad:</strong> 100-250 Mbps</p>
-                        <p><i class="fas fa-clock"></i> <strong>Latencia:</strong> ~20-40 ms</p>
-                        <p><i class="fas fa-bolt"></i> <strong>Consumo:</strong> 75-100 W</p>
-                    </div>
-                
-                    <div class="radio-option">
-                        <input type="radio" name="starlink-option" id="standard-option" value="499999">
-                        <label for="standard-option">Seleccionar esta opción</label>
-                    </div>
-                    
-                    <h4><i class="fas fa-list-alt"></i> Planes disponibles:</h4>
-                    <div class="plan-options">
-                        <div class="plan-option">
-                            <input type="radio" name="plan-option" id="plan-lite-standard" value="38000">
-                            <label for="plan-lite-standard">Residencial Lite: $38.000/mes</label>
-                            <p>Velocidades de 45-130 Mbps descarga / 10-20 Mbps carga</p>
-                        </div>
-                        <div class="plan-option">
-                            <input type="radio" name="plan-option" id="plan-standard-standard" value="56100">
-                            <label for="plan-standard-standard">Residencial Estándar: $56.100/mes</label>
-                            <p>Velocidades de 100-270+ Mbps descarga</p>
-                        </div>
-                    </div>
-                    
-                    <div class="btn-container">
-                        <a href="https://www.mercadolibre.com.ar/kit-starlink-de-internet-via-satelite-estandar-v4/p/MLA38764114#polycard_client=bookmarks&wid=MLA1448850481&sid=bookmarks" class="btn btn-outline" target="_blank">
-                            <i class="fas fa-external-link-alt"></i> Ver en Mercado Libre
-                        </a>
-                        <a href="https://www.starlink.com/order?processorToken=481b6ebd-1f5d-4e59-b34b-f7cb31706726&step=0" class="btn btn-outline" target="_blank">
-                            <i class="fas fa-external-link-alt"></i> Ver en Starlink
-                        </a>
-                    </div>
-                </div>
+      <section class="fade-in">
+        <h2>Opciones de Equipos Starlink</h2>
+        <div class="options-grid">
+          <div class="option" id="option-mini">
+            <span class="badge badge-accent">Más popular</span>
+            <h3>
+              <i class="fas fa-satellite-dish"></i> Starlink Mini (Portátil)
+            </h3>
+            <div class="price"><i class="fas fa-tag"></i> $189.000 ARS</div>
+            <div class="specs">
+              <p>
+                <i class="fas fa-tachometer-alt"></i>
+                <strong>Velocidad:</strong> 50-100 Mbps
+              </p>
+              <p>
+                <i class="fas fa-clock"></i> <strong>Latencia:</strong> ~23 ms
+              </p>
+              <p>
+                <i class="fas fa-bolt"></i> <strong>Consumo:</strong> 25-40 W
+              </p>
             </div>
-        </section>
-        
-        <section class="fade-in">
-            <h2>Accesorios Complementarios</h2>
-            <div class="accessories-grid">
-                <div class="accessory">
-                    <h4><i class="fas fa-tv"></i> TV Stick Google TV</h4>
-                    <p class="specs">Con apps para ver TV, películas y series gratis</p>
-                    <div class="price">
-                        <i class="fas fa-tag"></i> $49.690 ARS
-                    </div>
-                    <div class="radio-option">
-                        <input type="checkbox" id="tv-stick" name="accessory" value="49690">
-                        <label for="tv-stick">Incluir en presupuesto</label>
-                    </div>
-                    <div class="quantity-option">
-                        <label for="tv-stick-quantity">Cantidad:</label>
-                        <input type="number" id="tv-stick-quantity" name="tv-stick-quantity" value="1" min="1" style="width: 60px;">
-                    </div>
-                    <a href="https://articulo.mercadolibre.com.ar/MLA-1940814122-watch-onn-fhd-streaming-stick-2da-generacion-google-tv-8gb-_JM" class="btn btn-outline" target="_blank">
-                        <i class="fas fa-external-link-alt"></i> Ver en Mercado Libre
-                    </a>
-                </div>
-                
-                <div class="accessory">
-                    <h4><i class="fas fa-wifi"></i> Router TP-Link TL-WR840N</h4>
-                    <p class="specs">Router principal para conectar a antena Starlink</p>
-                    <div class="price">
-                        <i class="fas fa-tag"></i> $26.999 ARS
-                    </div>
-                    <div class="radio-option">
-                        <input type="checkbox" id="router" name="accessory" value="26999">
-                        <label for="router">Incluir en presupuesto</label>
-                    </div>
-                    <a href="https://articulo.mercadolibre.com.ar/MLA-1940814122-router-tp-link-tl-wr840n-_JM" class="btn btn-outline" target="_blank">
-                        <i class="fas fa-external-link-alt"></i> Ver en Mercado Libre
-                    </a>
-                </div>
-                
-                <div class="accessory">
-                    <h4><i class="fas fa-signal"></i> Extensor TP-Link RE200</h4>
-                    <p class="specs">Extensor de rango WiFi para amplificar señal</p>
-                    <div class="price">
-                        <i class="fas fa-tag"></i> $37.500 ARS
-                    </div>
-                    <div class="radio-option">
-                        <input type="checkbox" id="extensor" name="accessory" value="37500">
-                        <label for="extensor">Incluir en presupuesto</label>
-                    </div>
-                    <a href="https://articulo.mercadolibre.com.ar/MLA-1940814122-extensor-tp-link-re200-_JM" class="btn btn-outline" target="_blank">
-                        <i class="fas fa-external-link-alt"></i> Ver en Mercado Libre
-                    </a>
-                </div>
+
+            <div class="radio-option">
+              <input
+                type="radio"
+                name="starlink-option"
+                id="mini-option"
+                value="189000"
+                checked
+              />
+              <label for="mini-option">Seleccionar esta opción</label>
             </div>
-        </section>
-        
-        <section class="summary fade-in">
-            <h2>Resumen de Presupuesto</h2>
-            <div class="plan-info">
-                <strong><i class="fas fa-file-invoice-dollar"></i> Plan mensual seleccionado:</strong>
-                <span id="selected-plan-text">Residencial Lite ($38.000/mes)</span>
-                <p>(Este costo no está incluido en el total del presupuesto, es solo informativo)</p>
+
+            <h4><i class="fas fa-list-alt"></i> Planes compatibles:</h4>
+            <div class="plan-options">
+              <div class="plan-option">
+                <input
+                  type="radio"
+                  name="plan-option"
+                  id="plan-lite"
+                  value="38000"
+                  checked
+                />
+                <label for="plan-lite">Residencial Lite: $38.000/mes</label>
+                <p>Velocidades de 45-130 Mbps descarga / 10-20 Mbps carga</p>
+              </div>
+              <div class="plan-option">
+                <input
+                  type="radio"
+                  name="plan-option"
+                  id="plan-standard"
+                  value="56100"
+                />
+                <label for="plan-standard"
+                  >Residencial Estándar: $56.100/mes</label
+                >
+                <p>Velocidades de 100-270+ Mbps descarga</p>
+              </div>
             </div>
-            <ul class="cost-list" id="dynamic-cost-list">
-                <!-- Los elementos se agregarán dinámicamente aquí -->
-            </ul>
-            <div class="total">
-                <span>Total aproximado:</span>
-                <span>$<span id="total-price">0</span></span>
+
+            <div class="btn-container">
+              <a
+                href="https://www.mercadolibre.com.ar/starlink-kit-mini-internet-satelital/p/MLA40656539#polycard_client=bookmarks&wid=MLA1450558069&sid=bookmarks"
+                class="btn btn-outline"
+                target="_blank"
+              >
+                <i class="fas fa-external-link-alt"></i> Ver en Mercado Libre
+              </a>
+              <a
+                href="https://www.starlink.com/order?processorToken=481b6ebd-1f5d-4e59-b34b-f7cb31706726&step=0"
+                class="btn btn-outline"
+                target="_blank"
+              >
+                <i class="fas fa-external-link-alt"></i> Ver en Starlink
+              </a>
             </div>
-        </section>
-        
-        <div style="text-align: center;">
-            <a href="#" class="btn whatsapp-btn" id="whatsapp-btn" target="_blank">
-                <i class="fab fa-whatsapp"></i> Solicitar instalación por WhatsApp
-            </a>
+          </div>
+
+          <div class="option" id="option-standard">
+            <h3><i class="fas fa-satellite"></i> Starlink Estándar V4</h3>
+            <div class="price"><i class="fas fa-tag"></i> $499.999 ARS</div>
+            <div class="specs">
+              <p>
+                <i class="fas fa-tachometer-alt"></i>
+                <strong>Velocidad:</strong> 100-250 Mbps
+              </p>
+              <p>
+                <i class="fas fa-clock"></i> <strong>Latencia:</strong> ~20-40
+                ms
+              </p>
+              <p>
+                <i class="fas fa-bolt"></i> <strong>Consumo:</strong> 75-100 W
+              </p>
+            </div>
+
+            <div class="radio-option">
+              <input
+                type="radio"
+                name="starlink-option"
+                id="standard-option"
+                value="499999"
+              />
+              <label for="standard-option">Seleccionar esta opción</label>
+            </div>
+
+            <h4><i class="fas fa-list-alt"></i> Planes disponibles:</h4>
+            <div class="plan-options">
+              <div class="plan-option">
+                <input
+                  type="radio"
+                  name="plan-option"
+                  id="plan-lite-standard"
+                  value="38000"
+                />
+                <label for="plan-lite-standard"
+                  >Residencial Lite: $38.000/mes</label
+                >
+                <p>Velocidades de 45-130 Mbps descarga / 10-20 Mbps carga</p>
+              </div>
+              <div class="plan-option">
+                <input
+                  type="radio"
+                  name="plan-option"
+                  id="plan-standard-standard"
+                  value="56100"
+                />
+                <label for="plan-standard-standard"
+                  >Residencial Estándar: $56.100/mes</label
+                >
+                <p>Velocidades de 100-270+ Mbps descarga</p>
+              </div>
+            </div>
+
+            <div class="btn-container">
+              <a
+                href="https://www.mercadolibre.com.ar/kit-starlink-de-internet-via-satelite-estandar-v4/p/MLA38764114#polycard_client=bookmarks&wid=MLA1448850481&sid=bookmarks"
+                class="btn btn-outline"
+                target="_blank"
+              >
+                <i class="fas fa-external-link-alt"></i> Ver en Mercado Libre
+              </a>
+              <a
+                href="https://www.starlink.com/order?processorToken=481b6ebd-1f5d-4e59-b34b-f7cb31706726&step=0"
+                class="btn btn-outline"
+                target="_blank"
+              >
+                <i class="fas fa-external-link-alt"></i> Ver en Starlink
+              </a>
+            </div>
+          </div>
         </div>
+      </section>
+
+      <section class="fade-in">
+        <h2>Accesorios Complementarios</h2>
+        <div class="accessories-grid">
+          <div class="accessory">
+            <h4><i class="fas fa-tv"></i> TV Stick Google TV</h4>
+            <p class="specs">Con apps para ver TV, películas y series gratis</p>
+            <div class="price"><i class="fas fa-tag"></i> $ 48.490 ARS</div>
+            <div class="radio-option">
+              <input
+                type="checkbox"
+                id="tv-stick"
+                name="accessory"
+                value="48490"
+              />
+              <label for="tv-stick">Incluir en presupuesto</label>
+            </div>
+            <div class="quantity-option">
+              <label for="tv-stick-quantity">Cantidad:</label>
+              <input
+                type="number"
+                id="tv-stick-quantity"
+                name="tv-stick-quantity"
+                value="1"
+                min="1"
+                style="width: 60px"
+              />
+            </div>
+            <a
+              href="https://articulo.mercadolibre.com.ar/MLA-1827149008-nuevo-onn-google-tv-full-hd-streaming-device-8gb-control-voz-_JM?searchVariation=183396239663#polycard_client=search-nordic&searchVariation=183396239663&position=7&search_layout=stack&type=item&tracking_id=8c0adade-9ca6-480b-8f3e-2dde0c8d461d"
+              class="btn btn-outline"
+              target="_blank"
+            >
+              <i class="fas fa-external-link-alt"></i> Ver en Mercado Libre
+            </a>
+          </div>
+
+          <div class="accessory">
+            <h4><i class="fas fa-wifi"></i> Router TP-Link TL-WR840N</h4>
+            <p class="specs">
+              Router principal para conectar a antena Starlink
+            </p>
+            <div class="price"><i class="fas fa-tag"></i> $33.999 ARS</div>
+            <div class="radio-option">
+              <input
+                type="checkbox"
+                id="router"
+                name="accessory"
+                value="33.999"
+              />
+              <label for="router">Incluir en presupuesto</label>
+            </div>
+            <a
+              href="https://www.mercadolibre.com.ar/router-wifi-4-multimodo-tp-lilnk-wr840n-n300-v3-blanco/p/MLA18649612#polycard_client=search-nordic&searchVariation=MLA18649612&wid=MLA1508747155&position=6&search_layout=grid&type=product&tracking_id=24801a6d-4fa8-47d0-8a37-eaf0a8cab7e5&sid=search"
+              class="btn btn-outline"
+              target="_blank"
+            >
+              <i class="fas fa-external-link-alt"></i> Ver en Mercado Libre
+            </a>
+          </div>
+
+          <!-- Extensor TP-Link RE200 -->
+          <div class="accessory">
+            <h4><i class="fas fa-signal"></i> Extensor TP-Link RE200</h4>
+            <p class="specs">Extensor de rango WiFi para amplificar señal</p>
+            <div class="price"><i class="fas fa-tag"></i> $ 35.335 ARS</div>
+            <div class="radio-option">
+              <input
+                type="checkbox"
+                id="extensor"
+                name="accessory"
+                value="35.335"
+              />
+              <label for="extensor">Incluir en presupuesto</label>
+            </div>
+            <a
+              href="https://www.mercadolibre.com.ar/repetidor-extensor-de-rango-wi-fi-5-doble-banda-tp-link-re200-ac750/p/MLA18243252#polycard_client=search-nordic&searchVariation=MLA18243252&wid=MLA1432239490&position=2&search_layout=grid&type=product&tracking_id=809a7ca5-ce49-45b7-abb1-8966cbbb10e7&sid=search"
+              class="btn btn-outline"
+              target="_blank"
+            >
+              <i class="fas fa-external-link-alt"></i> Ver en Mercado Libre
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section class="summary fade-in">
+        <h2>Resumen de Presupuesto</h2>
+        <div class="plan-info">
+          <strong
+            ><i class="fas fa-file-invoice-dollar"></i> Plan mensual
+            seleccionado:</strong
+          >
+          <span id="selected-plan-text">Residencial Lite ($38.000/mes)</span>
+          <p>
+            (Este costo no está incluido en el total del presupuesto, es solo
+            informativo)
+          </p>
+        </div>
+        <ul class="cost-list" id="dynamic-cost-list">
+          <!-- Los elementos se agregarán dinámicamente aquí -->
+        </ul>
+        <div class="total">
+          <span>Total aproximado:</span>
+          <span>$<span id="total-price">0</span></span>
+        </div>
+      </section>
+
+      <div style="text-align: center">
+        <a href="#" class="btn whatsapp-btn" id="whatsapp-btn" target="_blank">
+          <i class="fab fa-whatsapp"></i> Solicitar instalación por WhatsApp
+        </a>
+      </div>
     </main>
 
-    <footer style="display: flex; justify-content: center; align-items: center; text-align: center;">
-        <div class="footer-copyright">© 2025 Todos los derechos reservados</div>
+    <footer
+      style="
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+      "
+    >
+      <div class="footer-copyright">© 2025 Todos los derechos reservados</div>
     </footer>
 
     <script>
-        // Función para formatear números con separadores de miles
-        function formatNumber(num) {
-            return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+      // Función para formatear números con separadores de miles y hasta tres decimales
+      function formatNumber(num) {
+        num = Number(num).toFixed(3); // Limitar a 3 decimales
+        const parts = num.split(".");
+        parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+        // Si los decimales son 000, no los mostramos
+        if (parts[1] === "000") return parts[0];
+        return parts.join(",");
+      }
+
+      // Función para calcular el total del presupuesto
+      function calculateTotal() {
+        let total = 0;
+
+        // Obtener precio de la opción de Starlink seleccionada
+        const starlinkOption = document.querySelector(
+          'input[name="starlink-option"]:checked'
+        );
+        if (starlinkOption) {
+          total += parseFloat(starlinkOption.value);
         }
 
-        // Función para calcular el total del presupuesto
-        function calculateTotal() {
-            let total = 0;
-
-            // Obtener precio de la opción de Starlink seleccionada
-            const starlinkOption = document.querySelector('input[name="starlink-option"]:checked');
-            if (starlinkOption) {
-                total += parseFloat(starlinkOption.value);
+        // Calcular precio de accesorios seleccionados
+        const accessoryOptions = document.querySelectorAll(
+          'input[name="accessory"]:checked'
+        );
+        accessoryOptions.forEach((option) => {
+          // Si es TV Stick Google TV, calcular costo por cantidad seleccionada
+          if (option.id === "tv-stick") {
+            const quantity =
+              parseInt(document.getElementById("tv-stick-quantity").value) || 0;
+            if (quantity > 0) {
+              const tvStickCost = 49690 * quantity; // Precio del TV Stick por cantidad
+              const installationCost = 35000 * quantity; // Costo de instalación por cantidad
+              total += tvStickCost + installationCost; // Sumar ambos costos al total
             }
+          } else {
+            // Sumar el costo de otros accesorios seleccionados
+            total += parseFloat(option.value);
+          }
+        });
 
-            // Calcular precio de accesorios seleccionados
-            const accessoryOptions = document.querySelectorAll('input[name="accessory"]:checked');
-            accessoryOptions.forEach(option => {
-                // Si es TV Stick Google TV, calcular costo por cantidad seleccionada
-                if (option.id === 'tv-stick') {
-                    const quantity = parseInt(document.getElementById('tv-stick-quantity').value) || 0;
-                    if (quantity > 0) {
-                        const tvStickCost = 49690 * quantity; // Precio del TV Stick por cantidad
-                        const installationCost = 35000 * quantity; // Costo de instalación por cantidad
-                        total += tvStickCost + installationCost; // Sumar ambos costos al total
-                    }
-                } else {
-                    // Sumar el costo de otros accesorios seleccionados
-                    total += parseFloat(option.value);
-                }
-            });
+        // Agregar costo fijo de instalación de antena
+        total += 150000;
 
-            // Agregar costo fijo de instalación de antena
-            total += 150000;
+        // Actualizar el total en el resumen
+        const totalPriceElem = document.getElementById("total-price");
+        totalPriceElem.textContent = formatNumber(total);
 
-            // Actualizar el total en el resumen
-            const totalPriceElem = document.getElementById('total-price');
-            totalPriceElem.textContent = formatNumber(total);
+        // Actualizar la lista de costos
+        updateCostList();
+      }
 
-            // Actualizar la lista de costos
-            updateCostList();
+      // Función para actualizar el resumen de presupuesto
+      function updateCostList() {
+        const costList = document.getElementById("dynamic-cost-list");
+        costList.innerHTML = ""; // Limpiar lista
+
+        // Agregar equipo seleccionado
+        const starlinkOption = document.querySelector(
+          'input[name="starlink-option"]:checked'
+        );
+        if (starlinkOption) {
+          const starlinkName = starlinkOption
+            .closest(".option")
+            .querySelector("h3")
+            .textContent.trim();
+          const starlinkPrice = parseFloat(starlinkOption.value);
+          addCostItem(costList, starlinkName, starlinkPrice);
         }
 
-        // Función para actualizar el resumen de presupuesto
-        function updateCostList() {
-            const costList = document.getElementById('dynamic-cost-list');
-            costList.innerHTML = ''; // Limpiar lista
+        // Agregar accesorios seleccionados
+        const accessoryOptions = document.querySelectorAll(
+          'input[name="accessory"]:checked'
+        );
+        accessoryOptions.forEach((option) => {
+          const accessoryName = option
+            .closest(".accessory")
+            .querySelector("h4")
+            .textContent.trim();
 
-            // Agregar equipo seleccionado
-            const starlinkOption = document.querySelector('input[name="starlink-option"]:checked');
-            if (starlinkOption) {
-                const starlinkName = starlinkOption.closest('.option').querySelector('h3').textContent.trim();
-                const starlinkPrice = parseFloat(starlinkOption.value);
-                addCostItem(costList, starlinkName, starlinkPrice);
+          // Si es TV Stick Google TV, agregar costo por cantidad seleccionada
+          if (option.id === "tv-stick") {
+            const quantity =
+              parseInt(document.getElementById("tv-stick-quantity").value) || 0;
+            if (quantity > 0) {
+              const tvStickCost = 49690 * quantity; // Precio del TV Stick por cantidad
+              const installationCost = 35000 * quantity; // Costo de instalación por cantidad
+              addCostItem(
+                costList,
+                `${accessoryName} (x${quantity})`,
+                tvStickCost
+              );
+              addCostItem(
+                costList,
+                `Instalación TV Stick (x${quantity})`,
+                installationCost
+              );
             }
+          } else {
+            // Agregar otros accesorios seleccionados
+            const accessoryPrice = parseFloat(option.value);
+            addCostItem(costList, accessoryName, accessoryPrice);
+          }
+        });
 
-            // Agregar accesorios seleccionados
-            const accessoryOptions = document.querySelectorAll('input[name="accessory"]:checked');
-            accessoryOptions.forEach(option => {
-                const accessoryName = option.closest('.accessory').querySelector('h4').textContent.trim();
+        // Agregar costo fijo de instalación de antena
+        addCostItem(costList, "Instalación antena con router/extensor", 150000);
+      }
 
-                // Si es TV Stick Google TV, agregar costo por cantidad seleccionada
-                if (option.id === 'tv-stick') {
-                    const quantity = parseInt(document.getElementById('tv-stick-quantity').value) || 0;
-                    if (quantity > 0) {
-                        const tvStickCost = 49690 * quantity; // Precio del TV Stick por cantidad
-                        const installationCost = 35000 * quantity; // Costo de instalación por cantidad
-                        addCostItem(costList, `${accessoryName} (x${quantity})`, tvStickCost);
-                        addCostItem(costList, `Instalación TV Stick (x${quantity})`, installationCost);
-                    }
-                } else {
-                    // Agregar otros accesorios seleccionados
-                    const accessoryPrice = parseFloat(option.value);
-                    addCostItem(costList, accessoryName, accessoryPrice);
-                }
-            });
-
-            // Agregar costo fijo de instalación de antena
-            addCostItem(costList, "Instalación antena con router/extensor", 150000);
-        }
-
-        // Función auxiliar para agregar items al resumen
-        function addCostItem(list, name, value) {
-            const li = document.createElement('li');
-            li.innerHTML = `
+      // Función auxiliar para agregar items al resumen
+      function addCostItem(list, name, value) {
+        const li = document.createElement("li");
+        li.innerHTML = `
                 <span>${name}:</span>
                 <span>$${formatNumber(value)}</span>
             `;
-            list.appendChild(li);
-        }
+        list.appendChild(li);
+      }
 
-        // Función para actualizar el texto del plan seleccionado
-        function updateSelectedPlanText() {
-            const planOption = document.querySelector('input[name="plan-option"]:checked');
-            if (planOption) {
-                const planLabel = planOption.nextElementSibling.textContent.trim();
-                const planPrice = parseFloat(planOption.value);
-                const selectedPlanText = document.getElementById('selected-plan-text');
-                selectedPlanText.innerHTML = `${planLabel} (<span class="text-primary">${formatNumber(planPrice)} ARS</span>/mes)`;
+      // Función para actualizar el texto del plan seleccionado
+      function updateSelectedPlanText() {
+        const planOption = document.querySelector(
+          'input[name="plan-option"]:checked'
+        );
+        if (planOption) {
+          const planLabel = planOption.nextElementSibling.textContent.trim();
+          const planPrice = parseFloat(planOption.value);
+          const selectedPlanText =
+            document.getElementById("selected-plan-text");
+          selectedPlanText.innerHTML = `${planLabel} (<span class="text-primary">${formatNumber(
+            planPrice
+          )} ARS</span>/mes)`;
+        }
+      }
+
+      // Función para actualizar el estilo del plan seleccionado
+      function updatePlanSelectionStyles() {
+        // Remover la clase 'selected-plan' de todos los planes
+        document.querySelectorAll(".plan-option").forEach((plan) => {
+          plan.classList.remove("selected-plan");
+        });
+
+        // Agregar la clase 'selected-plan' al plan seleccionado
+        const selectedPlanOption = document.querySelector(
+          'input[name="plan-option"]:checked'
+        );
+        if (selectedPlanOption) {
+          selectedPlanOption
+            .closest(".plan-option")
+            .classList.add("selected-plan");
+        }
+      }
+
+      // Función para seleccionar automáticamente el primer plan compatible al cambiar de equipo Starlink
+      function autoSelectPlanForStarlink() {
+        document.querySelectorAll('input[name="starlink-option"]').forEach((input) => {
+          input.addEventListener('change', function() {
+            if (this.checked) {
+              const optionDiv = this.closest('.option');
+              if (optionDiv) {
+                const firstPlan = optionDiv.querySelector('input[name="plan-option"]');
+                if (firstPlan) {
+                  firstPlan.checked = true;
+                  // Disparar eventos de cambio para actualizar el resumen y estilos
+                  firstPlan.dispatchEvent(new Event('change', { bubbles: true }));
+                }
+              }
             }
+          });
+        });
+      }
+
+      // Función para generar el mensaje de WhatsApp
+      function generateWhatsAppMessage() {
+        let message =
+          "¡Hola! Me gustaría solicitar una instalación con los siguientes detalles:\n\n";
+
+        // Agregar equipo seleccionado
+        const starlinkOption = document.querySelector(
+          'input[name="starlink-option"]:checked'
+        );
+        if (starlinkOption) {
+          const starlinkName = starlinkOption
+            .closest(".option")
+            .querySelector("h3")
+            .textContent.trim();
+          const starlinkPrice = parseFloat(starlinkOption.value);
+          message += `Equipo seleccionado: ${starlinkName} - $${formatNumber(
+            starlinkPrice
+          )}\n`;
         }
 
-        // Función para actualizar el estilo del plan seleccionado
-        function updatePlanSelectionStyles() {
-            // Remover la clase 'selected-plan' de todos los planes
-            document.querySelectorAll('.plan-option').forEach(plan => {
-                plan.classList.remove('selected-plan');
-            });
-
-            // Agregar la clase 'selected-plan' al plan seleccionado
-            const selectedPlanOption = document.querySelector('input[name="plan-option"]:checked');
-            if (selectedPlanOption) {
-                selectedPlanOption.closest('.plan-option').classList.add('selected-plan');
-            }
+        // Agregar plan seleccionado
+        const planOption = document.querySelector(
+          'input[name="plan-option"]:checked'
+        );
+        if (planOption) {
+          const planLabel = planOption.nextElementSibling.textContent.trim();
+          message += `Plan seleccionado: ${planLabel}\n`;
         }
 
-        // Función para generar el mensaje de WhatsApp
-function generateWhatsAppMessage() {
-    let message = "¡Hola! Me gustaría solicitar una instalación con los siguientes detalles:\n\n";
-
-    // Agregar equipo seleccionado
-    const starlinkOption = document.querySelector('input[name="starlink-option"]:checked');
-    if (starlinkOption) {
-        const starlinkName = starlinkOption.closest('.option').querySelector('h3').textContent.trim();
-        const starlinkPrice = parseFloat(starlinkOption.value);
-        message += `Equipo seleccionado: ${starlinkName} - $${formatNumber(starlinkPrice)}\n`;
-    }
-
-    // Agregar plan seleccionado
-    const planOption = document.querySelector('input[name="plan-option"]:checked');
-    if (planOption) {
-        const planLabel = planOption.nextElementSibling.textContent.trim();
-        message += `Plan seleccionado: ${planLabel}\n`;
-    }
-
-    // Agregar accesorios seleccionados
-    const accessoryOptions = document.querySelectorAll('input[name="accessory"]:checked');
-    if (accessoryOptions.length > 0) {
-        message += "\nAccesorios seleccionados:\n";
-        accessoryOptions.forEach(option => {
-            const accessoryName = option.closest('.accessory').querySelector('h4').textContent.trim();
+        // Agregar accesorios seleccionados
+        const accessoryOptions = document.querySelectorAll(
+          'input[name="accessory"]:checked'
+        );
+        if (accessoryOptions.length > 0) {
+          message += "\nAccesorios seleccionados:\n";
+          accessoryOptions.forEach((option) => {
+            const accessoryName = option
+              .closest(".accessory")
+              .querySelector("h4")
+              .textContent.trim();
 
             // Si es TV Stick Google TV, agregar cantidad y costos
-            if (option.id === 'tv-stick') {
-                const quantity = parseInt(document.getElementById('tv-stick-quantity').value) || 0;
-                if (quantity > 0) {
-                    const tvStickCost = 49690 * quantity;
-                    const installationCost = 35000 * quantity;
-                    message += `- ${accessoryName} (x${quantity}): $${formatNumber(tvStickCost)}\n`;
-                    message += `  Instalación TV Stick (x${quantity}): $${formatNumber(installationCost)}\n`;
-                }
+            if (option.id === "tv-stick") {
+              const quantity =
+                parseInt(document.getElementById("tv-stick-quantity").value) ||
+                0;
+              if (quantity > 0) {
+                const tvStickCost = 49690 * quantity;
+                const installationCost = 35000 * quantity;
+                message += `- ${accessoryName} (x${quantity}): $${formatNumber(
+                  tvStickCost
+                )}\n`;
+                message += `  Instalación TV Stick (x${quantity}): $${formatNumber(
+                  installationCost
+                )}\n`;
+              }
             } else {
-                const accessoryPrice = parseFloat(option.value);
-                message += `- ${accessoryName}: $${formatNumber(accessoryPrice)}\n`;
+              const accessoryPrice = parseFloat(option.value);
+              message += `- ${accessoryName}: $${formatNumber(
+                accessoryPrice
+              )}\n`;
             }
-        });
-    }
+          });
+        }
 
-    // Agregar costo fijo de instalación de antena
-    message += `\nCosto fijo: Instalación antena con router/extensor - $150.000\n`;
+        // Agregar costo fijo de instalación de antena
+        message += `\nCosto fijo: Instalación antena con router/extensor - $150.000\n`;
 
-    // Agregar total aproximado
-    const totalPriceElem = document.getElementById('total-price').textContent;
-    message += `\nTotal aproximado: $${totalPriceElem}\n`;
+        // Agregar total aproximado
+        const totalPriceElem =
+          document.getElementById("total-price").textContent;
+        message += `\nTotal aproximado: $${totalPriceElem}\n`;
 
-    return message;
-}
+        return message;
+      }
 
-// Función para redirigir a WhatsApp
-function redirectToWhatsApp() {
-    const phoneNumber = "2266661409"; // Número de WhatsApp
-    const message = encodeURIComponent(generateWhatsAppMessage());
-    const whatsappURL = `https://wa.me/${phoneNumber}?text=${message}`;
-    window.open(whatsappURL, "_blank");
-}
+      // Función para redirigir a WhatsApp
+      function redirectToWhatsApp() {
+        const phoneNumber = "2983523639"; // Número de WhatsApp
+        const message = encodeURIComponent(generateWhatsAppMessage());
+        const whatsappURL = `https://wa.me/${phoneNumber}?text=${message}`;
+        window.open(whatsappURL, "_blank");
+      }
 
-// Escuchar clic en el botón de WhatsApp
-document.getElementById('whatsapp-btn').addEventListener('click', (e) => {
-    e.preventDefault(); // Evitar comportamiento predeterminado del enlace
-    redirectToWhatsApp();
-});
+      // Escuchar clic en el botón de WhatsApp
+      document.getElementById("whatsapp-btn").addEventListener("click", (e) => {
+        e.preventDefault(); // Evitar comportamiento predeterminado del enlace
+        redirectToWhatsApp();
+      });
 
-        // Escuchar cambios en los radios de los planes
-        document.querySelectorAll('input[name="plan-option"]').forEach(input => {
-            input.addEventListener('change', () => {
-                updateSelectedPlanText();
-                updatePlanSelectionStyles();
-            });
-        });
-
-        // Escuchar cambios en los inputs
-        document.querySelectorAll('input[type="radio"], input[type="checkbox"], input[type="number"]').forEach(input => {
-            input.addEventListener('change', () => {
-                calculateTotal();
-                updateSelectedPlanText();
-            });
+      // Escuchar cambios en los radios de los planes
+      document
+        .querySelectorAll('input[name="plan-option"]')
+        .forEach((input) => {
+          input.addEventListener("change", () => {
+            updateSelectedPlanText();
+            updatePlanSelectionStyles();
+          });
         });
 
-        // Inicializar
-        calculateTotal();
-        updateSelectedPlanText();
-        updatePlanSelectionStyles();
+      // Escuchar cambios en los inputs
+      document
+        .querySelectorAll(
+          'input[type="radio"], input[type="checkbox"], input[type="number"]'
+        )
+        .forEach((input) => {
+          input.addEventListener("change", () => {
+            calculateTotal();
+            updateSelectedPlanText();
+          });
+        });
+
+      // Inicializar
+      calculateTotal();
+      updateSelectedPlanText();
+      updatePlanSelectionStyles();
+      autoSelectPlanForStarlink();
     </script>
-</body>
+  </body>
 </html>
