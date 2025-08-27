@@ -1224,7 +1224,7 @@
                 <i class="fas fa-external-link-alt"></i> Ver en Mercado Libre
               </a>
               <a
-                href="https://www.starlink.com/order?processorToken=481b6ebd-1f5d-4e59-b34b-f7cb31706726&step=0"
+                href="https://www.starlink.com/specifications?spec=5&referral=RC-481067-34312-6&utm_source=google&utm_medium=paid&utm_campaign=sls_ar_src_ggl_brd_stk-pe&utm_content=sls_ar_src_ggl_brd_stk-pe_res_itp_v4s_txt_es-419_pmo-249-34&utm_term=stk-pe_starlink&utm_id="
                 class="btn btn-outline"
                 target="_blank"
               >
@@ -1234,8 +1234,14 @@
           </div>
 
           <div class="option" id="option-standard">
-            <h3><i class="fas fa-satellite"></i> Starlink Estándar V4</h3>
-            <div class="price"><i class="fas fa-tag"></i> $499.999 ARS</div>
+            <span class="badge badge-accent" style="background:linear-gradient(90deg,#fbbf24,#fde68a);color:#232c3a;font-weight:700;font-size:1.08em;border-radius:16px;padding:0.35em 1.1em;box-shadow:0 2px 8px rgba(245,158,11,0.13);margin-bottom:0.7em;display:inline-block;">PROMOCIÓN <i class="fas fa-percent" style="color:#b91c1c;margin-left:0.3em;"></i> 50% OFF</span>
+            <h3 style="display:flex;align-items:center;gap:0.5em;margin-bottom:0.5em;"><i class="fas fa-satellite"></i> Starlink Estándar V4</h3>
+            <div class="price" style="display:flex;align-items:center;gap:0.7em;font-size:1.15em;margin-bottom:0.3em;">
+              <i class="fas fa-tag" style="color:#b91c1c;"></i>
+              <span style="text-decoration:line-through;color:#b91c1c;font-weight:600;opacity:0.7;">$499.999 ARS</span>
+              <span style="color:#10b981;font-weight:800;font-size:1.18em;background:linear-gradient(90deg,#e0f2fe,#bbf7d0);border-radius:12px;padding:0.18em 0.7em;box-shadow:0 2px 8px rgba(16,185,129,0.09);">$249.999 ARS</span>
+            </div>
+            <div style="font-size:0.99em;color:#b91c1c;font-weight:600;margin-bottom:0.7em;background:rgba(245,158,11,0.13);border-radius:10px;padding:0.3em 0.7em;display:inline-block;box-shadow:0 1px 4px rgba(245,158,11,0.09);">Promo válida hasta el <strong>11 de septiembre</strong></div>
             <div class="specs">
               <p>
                 <i class="fas fa-tachometer-alt"></i>
@@ -1255,7 +1261,7 @@
                 type="radio"
                 name="starlink-option"
                 id="standard-option"
-                value="499999"
+                value="249999"
               />
               <label for="standard-option">Seleccionar esta opción</label>
             </div>
@@ -1297,7 +1303,7 @@
                 <i class="fas fa-external-link-alt"></i> Ver en Mercado Libre
               </a>
               <a
-                href="https://www.starlink.com/order?processorToken=481b6ebd-1f5d-4e59-b34b-f7cb31706726&step=0"
+                href="https://www.starlink.com/specifications?spec=5&referral=RC-481067-34312-6&utm_source=google&utm_medium=paid&utm_campaign=sls_ar_src_ggl_brd_stk-pe&utm_content=sls_ar_src_ggl_brd_stk-pe_res_itp_v4s_txt_es-419_pmo-249-34&utm_term=stk-pe_starlink&utm_id="
                 class="btn btn-outline"
                 target="_blank"
               >
@@ -1355,9 +1361,20 @@
                 type="checkbox"
                 id="router"
                 name="accessory"
-                value="33.999"
+                value="33999"
               />
               <label for="router">Incluir en presupuesto</label>
+            </div>
+            <div class="quantity-option">
+              <label for="router-quantity">Cantidad:</label>
+              <input
+                type="number"
+                id="router-quantity"
+                name="router-quantity"
+                value="1"
+                min="1"
+                style="width: 60px"
+              />
             </div>
             <a
               href="https://www.mercadolibre.com.ar/router-wifi-4-multimodo-tp-lilnk-wr840n-n300-v3-blanco/p/MLA18649612#polycard_client=search-nordic&searchVariation=MLA18649612&wid=MLA1508747155&position=6&search_layout=grid&type=product&tracking_id=24801a6d-4fa8-47d0-8a37-eaf0a8cab7e5&sid=search"
@@ -1378,9 +1395,20 @@
                 type="checkbox"
                 id="extensor"
                 name="accessory"
-                value="35.335"
+                value="35335"
               />
               <label for="extensor">Incluir en presupuesto</label>
+            </div>
+            <div class="quantity-option">
+              <label for="extensor-quantity">Cantidad:</label>
+              <input
+                type="number"
+                id="extensor-quantity"
+                name="extensor-quantity"
+                value="1"
+                min="1"
+                style="width: 60px"
+              />
             </div>
             <a
               href="https://www.mercadolibre.com.ar/repetidor-extensor-de-rango-wi-fi-5-doble-banda-tp-link-re200-ac750/p/MLA18243252#polycard_client=search-nordic&searchVariation=MLA18243252&wid=MLA1432239490&position=2&search_layout=grid&type=product&tracking_id=809a7ca5-ce49-45b7-abb1-8966cbbb10e7&sid=search"
@@ -1497,6 +1525,20 @@
               const installationCost = 35000 * quantity; // Costo de instalación por cantidad
               total += tvStickCost + installationCost; // Sumar ambos costos al total
             }
+          } else if (option.id === "router") {
+            const quantity =
+              parseInt(document.getElementById("router-quantity").value) || 0;
+            if (quantity > 0) {
+              const routerCost = 33999 * quantity;
+              total += routerCost;
+            }
+          } else if (option.id === "extensor") {
+            const quantity =
+              parseInt(document.getElementById("extensor-quantity").value) || 0;
+            if (quantity > 0) {
+              const extensorCost = 35335 * quantity;
+              total += extensorCost;
+            }
           } else {
             // Sumar el costo de otros accesorios seleccionados
             total += parseFloat(option.value);
@@ -1560,6 +1602,28 @@
                 installationCost
               );
             }
+          } else if (option.id === "router") {
+            const quantity =
+              parseInt(document.getElementById("router-quantity").value) || 0;
+            if (quantity > 0) {
+              const routerCost = 33999 * quantity;
+              addCostItem(
+                costList,
+                `${accessoryName} (x${quantity})`,
+                routerCost
+              );
+            }
+          } else if (option.id === "extensor") {
+            const quantity =
+              parseInt(document.getElementById("extensor-quantity").value) || 0;
+            if (quantity > 0) {
+              const extensorCost = 35335 * quantity;
+              addCostItem(
+                costList,
+                `${accessoryName} (x${quantity})`,
+                extensorCost
+              );
+            }
           } else {
             // Agregar otros accesorios seleccionados
             const accessoryPrice = parseFloat(option.value);
@@ -1593,6 +1657,7 @@
             document.getElementById("selected-plan-text");
           selectedPlanText.innerHTML = `${planLabel} (<span class="text-primary">${formatNumber(
             planPrice
+         
           )} ARS</span>/mes)`;
         }
       }
@@ -1834,6 +1899,38 @@
 
       // --- VALIDACIÓN DE CANTIDAD TV STICK ---
       document.getElementById('tv-stick-quantity').addEventListener('input', function() {
+        if (this.value < 1) {
+          this.value = 1;
+          Swal.fire({
+            icon: 'warning',
+            title: 'La cantidad mínima es 1',
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 2000,
+            background: document.body.classList.contains('darkmode') ? '#232c3a' : '#fff',
+            color: document.body.classList.contains('darkmode') ? '#f1f5f9' : '#1e293b',
+          });
+        }
+      });
+      // --- VALIDACIÓN DE CANTIDAD ROUTER ---
+      document.getElementById('router-quantity').addEventListener('input', function() {
+        if (this.value < 1) {
+          this.value = 1;
+          Swal.fire({
+            icon: 'warning',
+            title: 'La cantidad mínima es 1',
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 2000,
+            background: document.body.classList.contains('darkmode') ? '#232c3a' : '#fff',
+            color: document.body.classList.contains('darkmode') ? '#f1f5f9' : '#1e293b',
+          });
+        }
+      });
+      // --- VALIDACIÓN DE CANTIDAD EXTENSOR ---
+      document.getElementById('extensor-quantity').addEventListener('input', function() {
         if (this.value < 1) {
           this.value = 1;
           Swal.fire({
